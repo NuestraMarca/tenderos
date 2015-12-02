@@ -1,14 +1,14 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
-use Education\Http\Requests;
-use Education\Http\Requests\ProtocolGenerator\FormRequest;
-use Education\Http\Controllers\Controller;
-use Education\Entities\GeneratedProtocol;
+use Tenderos\Http\Requests;
+use Tenderos\Http\Requests\ProtocolGenerator\FormRequest;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Entities\GeneratedProtocol;
 use Auth, Flash, App;
 
 class GeneratedProtocolsController extends Controller
@@ -75,7 +75,7 @@ class GeneratedProtocolsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Education\Http\Requests\ProtocolGenerator\FormRequest
+     * @param  Tenderos\Http\Requests\ProtocolGenerator\FormRequest
      * @return \Illuminate\Http\Response
      */
     public function store(FormRequest $request)
@@ -126,7 +126,7 @@ class GeneratedProtocolsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Education\Http\Requests\ProtocolGenerator\FormRequest
+     * @param  Tenderos\Http\Requests\ProtocolGenerator\FormRequest
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

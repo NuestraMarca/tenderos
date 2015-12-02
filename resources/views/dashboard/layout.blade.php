@@ -26,9 +26,6 @@
                 </div>
             </div>
             <div id="page-container" class="header-fixed-top sidebar-visible-lg-full">
-                <!-- Alternative Sidebar -->
-                @include('dashboard.includes.right_sidebar')
-                <!-- END Alternative Sidebar -->
 
                 <!-- Main Sidebar -->
                 @include('dashboard.includes.sidebar')

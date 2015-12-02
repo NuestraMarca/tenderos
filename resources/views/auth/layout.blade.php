@@ -11,13 +11,23 @@
 @section ('class_body') class="auth" @endsection
 @section ('content_body')
     {{-- Login Container --}}
-    <div id="login-container">
-    	{{-- Header --}}
-        <h1 class="h2 text-light text-center push-top-bottom animation-slideDown" style="margin-top: 20px;">
-        	@yield('title_auth')
-        </h1>
-        {{-- END Header --}}
 
+    <div class="row" style="margin-bottom:40px;">
+        <div class="col-md-6 col-md-offset-3">
+            {{-- Header --}}
+            <h1 class="h2 text-light text-center push-top-bottom animation-slideDown" style="margin-top: 20px;">
+                @yield('title_auth')
+            </h1>
+
+            <img src="/images/placeholders/logos/company_1.png" class="col-md-4">
+            <img src="/images/placeholders/logos/company_1.png" class="col-md-4">
+            <img src="/images/placeholders/logos/company_1.png" class="col-md-4">
+
+            {{-- END Header --}}
+        </div>
+    </div>
+
+    <div id="login-container">
         {{-- Block --}}
         <div class="block animation-fadeInQuickInv">
             {{-- Title --}}
@@ -35,9 +45,11 @@
         </div>
         {{-- END Block --}}
 
+        @yield('aditional_form')
+
         {{-- Footer --}}
         @include('alerts')
-        <footer style="color:white;" class="text-center animation-pullUp">
+        <footer style="color:white; margin-top:15px;" class="text-center animation-pullUp col-md-12">
             <small>
                 <span id="year-copy"></span> &copy; 
                 <a href="{{ env('APP_DEVELOPER_WEBSITE') }}" style="color:white;" target="_blank">{{ env('APP_DEVELOPER') }}</a>

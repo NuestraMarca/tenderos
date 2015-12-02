@@ -26,8 +26,16 @@
                     Recordarme
                 </div>
                 <div class="col-xs-4 text-right">
-                    <button type="submit" class="btn btn-effect-ripple btn-sm btn-primary"><i class="fa fa-check"></i> Iniciar</button>
+                    <button type="submit" class="btn btn-effect-ripple btn-primary"><i class="fa fa-check"></i> Iniciar</button>
                 </div>
             </div>
         {!! Form::close() !!}
+    @endsection
+
+    @section('aditional_form')
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <a href="/auth/register" class="btn btn-block btn-lg btn-warning">Quiero registrarme</a>
+            </div>
+        </div>
     @endsection

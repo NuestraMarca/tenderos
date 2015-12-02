@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\Middleware;
+namespace Tenderos\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -39,6 +39,13 @@ class Authenticate
                 return response('Unauthorized.', 401);
             } else {
                 return redirect()->guest('auth/login');
+            }
+        }
+        else if(! $this->auth->user()->terms) {
+            if ($request->ajax()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('auth/terms');
             }
         }
 

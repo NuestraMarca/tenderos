@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\ViewComposers\GeneratedProtocols;
+namespace Tenderos\Http\ViewComposers\GeneratedProtocols;
 
 use Illuminate\Contracts\View\View;
 

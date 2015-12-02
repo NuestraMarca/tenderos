@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\Middleware;
+namespace Tenderos\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 

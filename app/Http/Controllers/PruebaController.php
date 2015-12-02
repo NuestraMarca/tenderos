@@ -1,11 +1,11 @@
 <?php
 
-namespace Education\Http\Controllers;
+namespace Tenderos\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Education\Http\Requests;
-use Education\Http\Controllers\Controller;
+use Tenderos\Http\Requests;
+use Tenderos\Http\Controllers\Controller;
 
 class PruebaController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Exceptions;
+namespace Tenderos\Exceptions;
 
 use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;

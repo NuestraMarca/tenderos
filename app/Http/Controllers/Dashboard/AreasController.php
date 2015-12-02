@@ -1,15 +1,15 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Database\QueryException;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Areas\CreateRequest;
-use Education\Http\Requests\Areas\EditRequest;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Areas\CreateRequest;
+use Tenderos\Http\Requests\Areas\EditRequest;
 use Flash;
-use Education\Entities\Area;
+use Tenderos\Entities\Area;
 
 class AreasController extends Controller
 {

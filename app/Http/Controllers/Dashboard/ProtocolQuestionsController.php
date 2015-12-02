@@ -1,15 +1,15 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Questions\CreateRequest;
-use Education\Http\Requests\Questions\EditRequest;
-use Education\Entities\Protocol;
-use Education\Entities\Question;
-use Education\Entities\Answer;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Questions\CreateRequest;
+use Tenderos\Http\Requests\Questions\EditRequest;
+use Tenderos\Entities\Protocol;
+use Tenderos\Entities\Question;
+use Tenderos\Entities\Answer;
 use Flash;
 
 class ProtocolQuestionsController extends Controller

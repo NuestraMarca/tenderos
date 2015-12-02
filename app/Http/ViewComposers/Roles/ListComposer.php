@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\ViewComposers\Roles;
+namespace Tenderos\Http\ViewComposers\Roles;
 
 use Illuminate\Contracts\View\View;
 

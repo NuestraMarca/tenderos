@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\ViewComposers\Protocols\Questions;
+namespace Tenderos\Http\ViewComposers\Protocols\Questions;
 
 use Illuminate\Contracts\View\View;
 

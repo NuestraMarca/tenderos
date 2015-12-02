@@ -1,9 +1,9 @@
 <?php
 
-namespace Education\Http\ViewComposers\Users;
+namespace Tenderos\Http\ViewComposers\Users;
 
 use Illuminate\Contracts\View\View;
-use Education\Entities\User;
+use Tenderos\Entities\User;
 
 class FormComposer
 {

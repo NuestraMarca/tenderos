@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => Education\Entities\User::class,
+    'model' => Tenderos\Entities\User::class,
 
     /*
     |--------------------------------------------------------------------------

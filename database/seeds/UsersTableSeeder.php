@@ -8,26 +8,11 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        User::create([
-            'name' => 'Súper Administrador',
-            'username' => 'superadmin',
-            'email' => 'superadmin@Laravel.info',
-            'password' => 123,
-            'type' => 'superadmin',
-            'company_id' => 1,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
-        ]);
+        factory(User::class, 'admin_default')->create();
+        factory(User::class, 'shopkeeper_default')->create();
+        factory(User::class, 'producer_default')->create();
 
-        User::create([
-            'name' => 'Admin',
-            'username' => 'admin',
-            'email' => 'admin@Laravel.info',
-            'password' => 123,
-            'type' => 'admin',
-            'company_id' => 1,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
-        ]);
+        factory(User::class, 'shopkeeper', 10)->create();
+        factory(User::class, 'producer', 10)->create();
     }
 }

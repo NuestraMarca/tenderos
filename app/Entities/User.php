@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Entities;
+namespace Tenderos\Entities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -258,5 +258,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $this->areas()->detach();
         $this->roles()->detach();
         $this->delete(); 
+    }
+
+    public function acceptTerms()
+    {
+        $this->terms = true;
+        $this->save();
     }
 }

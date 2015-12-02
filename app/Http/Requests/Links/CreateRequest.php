@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\Requests\Links;
+namespace Tenderos\Http\Requests\Links;
 
-use Education\Http\Requests\Request;
+use Tenderos\Http\Requests\Request;
 
 class CreateRequest extends Request
 {

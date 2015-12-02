@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model'  => Education\User::class,
+        'model'  => Tenderos\User::class,
         'key'    => '',
         'secret' => '',
     ],

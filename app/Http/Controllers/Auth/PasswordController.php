@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\Controllers\Auth;
+namespace Tenderos\Http\Controllers\Auth;
 
-use Education\Http\Controllers\Controller;
+use Tenderos\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller

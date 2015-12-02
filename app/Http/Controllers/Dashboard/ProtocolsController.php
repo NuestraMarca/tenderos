@@ -1,13 +1,13 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Route;
-use Education\Http\Controllers\Controller;
+use Tenderos\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
-use Education\Http\Requests\Protocols\CreateRequest;
-use Education\Http\Requests\Protocols\EditRequest;
-use Education\Entities\Protocol;
+use Tenderos\Http\Requests\Protocols\CreateRequest;
+use Tenderos\Http\Requests\Protocols\EditRequest;
+use Tenderos\Entities\Protocol;
 use Auth;
 use Storage;
 use File;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\Requests;
+namespace Tenderos\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

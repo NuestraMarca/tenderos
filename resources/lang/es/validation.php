@@ -169,10 +169,8 @@ return array(
     'title'         => 'titulo'
 ),
 
-'translate' => array(
-    'answer'        => 'Efectivas',
-    'not_answer'    => 'Sin Responder',
-    'off'           => 'Celular apagado'
+'auth' => array(
+    'failed'        => 'El usuario y la contraseña no coincide',
 ),
 
 );

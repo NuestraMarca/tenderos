@@ -1,13 +1,13 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use Education\Http\Controllers\Controller;
-use Education\Entities\Protocol;
-use Education\Entities\User;
-use Education\Entities\Exam;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Entities\Protocol;
+use Tenderos\Entities\User;
+use Tenderos\Entities\Exam;
 use Auth;
 use Flash;
 

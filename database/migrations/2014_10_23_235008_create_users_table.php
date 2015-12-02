@@ -19,10 +19,8 @@ class CreateUsersTable extends Migration
 
             $table->string('url_photo', 255)->nullable();
 
-            $table->string('type', 20)->enum(['superadmin', 'admin', 'registered'])->default('registered');
-
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->string('type', 20)->enum(['admin', 'shopkeeper', 'producer'])->default('admin');
+            $table->boolean('terms')->default(0);
 
             $table->rememberToken();
             $table->timestamps();

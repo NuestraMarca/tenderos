@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\ViewComposers\Formats\Checklists\Questions;
+namespace Tenderos\Http\ViewComposers\Formats\Checklists\Questions;
 
 use Illuminate\Contracts\View\View;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\ViewComposers;
+namespace Tenderos\Http\ViewComposers;
 
 use Illuminate\Contracts\View\View;
 

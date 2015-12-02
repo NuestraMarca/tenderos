@@ -1,9 +1,9 @@
 <?php
 
-namespace Education\Http\ViewComposers\Companies;
+namespace Tenderos\Http\ViewComposers\Companies;
 
 use Illuminate\Contracts\View\View;
-use Education\Entities\Company;
+use Tenderos\Entities\Company;
 
 class ListComposer
 {

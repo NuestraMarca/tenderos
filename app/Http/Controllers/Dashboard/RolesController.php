@@ -1,14 +1,14 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Database\QueryException;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Roles\CreateRequest;
-use Education\Http\Requests\Roles\EditRequest;
-use Education\Entities\Role;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Roles\CreateRequest;
+use Tenderos\Http\Requests\Roles\EditRequest;
+use Tenderos\Entities\Role;
 use Flash;
 
 

@@ -11,24 +11,8 @@
 |
 */
 
-use Education\Entities\Company;
-use Education\Entities\User;
-use Education\Entities\Role;
-use Education\Entities\Area;
-use Education\Entities\Category;
+use Tenderos\Entities\User;
 
-$factory->define(Company::class, function ($faker) {
-    return [
-        'name' => $faker->company,
-        'type' => 'customer',
-    ];
-});
-
-$factory->defineAs(Company::class, 'developer', function ($faker) use ($factory) {
-    $user = $factory->raw(Company::class);
-
-    return array_merge($user, ['type' => 'developer']);
-});
 
 $factory->define(User::class, function ($faker) {
     return [
@@ -41,47 +25,38 @@ $factory->define(User::class, function ($faker) {
     ];
 });
 
-$factory->defineAs(User::class, 'user_default', function ($faker) use ($factory) {
-    $user = $factory->raw(User::class);
-
-    return array_merge($user, ['username' => 'miguel']);
-});
-
 $factory->defineAs(User::class, 'admin', function ($faker) use ($factory) {
     $user = $factory->raw(User::class);
 
     return array_merge($user, ['type' => 'admin']);
 });
 
+$factory->defineAs(User::class, 'shopkeeper', function ($faker) use ($factory) {
+    $user = $factory->raw(User::class);
+
+    return array_merge($user, ['type' => 'shopkeeper']);
+});
+
+$factory->defineAs(User::class, 'producer', function ($faker) use ($factory) {
+    $user = $factory->raw(User::class);
+
+    return array_merge($user, ['type' => 'producer']);
+});
+
 $factory->defineAs(User::class, 'admin_default', function ($faker) use ($factory) {
     $user = $factory->raw(User::class);
 
-    return array_merge($user, ['type' => 'admin', 'username' => 'admin']);
+    return array_merge($user, ['username' => 'admin', 'type' => 'admin']);
 });
 
-$factory->defineAs(User::class, 'superadmin', function ($faker) use ($factory) {
+$factory->defineAs(User::class, 'shopkeeper_default', function ($faker) use ($factory) {
     $user = $factory->raw(User::class);
 
-    return array_merge($user, ['type' => 'superadmin', 'username' => 'superadmin']);
+    return array_merge($user, ['username' => 'tendero', 'type' => 'shopkeeper']);
 });
 
-$factory->define(Role::class, function ($faker) {
-    return [
-        'name' => $faker->unique()->name(),
-        'description' => $faker->unique()->sentence(6),
-    ];
-});
+$factory->defineAs(User::class, 'producer_default', function ($faker) use ($factory) {
+    $user = $factory->raw(User::class);
 
-$factory->define(Area::class, function ($faker) {
-    return [
-        'name' => $faker->unique()->name(),
-        'description' => $faker->unique()->sentence(6),
-    ];
-});
-
-$factory->define(Category::class, function ($faker) {
-    return [
-        'name' => $faker->unique()->name(),
-        'description' => $faker->unique()->sentence(6),
-    ];
+    return array_merge($user, ['username' => 'productor', 'type' => 'producer']);
 });

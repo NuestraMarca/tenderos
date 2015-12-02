@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\Middleware;
+namespace Tenderos\Http\Middleware;
 
 use Closure;
 use Auth;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Education\Console\Commands;
+namespace Tenderos\Console\Commands;
 
 use Illuminate\Console\Command;
-use Education\Entities\Voter;
-use Education\Libraries\Sms\SendSMS;
+use Tenderos\Entities\Voter;
+use Tenderos\Libraries\Sms\SendSMS;
 use Log;
 
 class Birthday extends Command

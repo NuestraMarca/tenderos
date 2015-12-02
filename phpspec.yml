@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: Education
-        psr4_prefix: Education
+        namespace: Tenderos
+        psr4_prefix: Tenderos
         src_path: app

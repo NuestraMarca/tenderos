@@ -1,12 +1,12 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard\FormatsChecklists;
+namespace Tenderos\Http\Controllers\Dashboard\FormatsChecklists;
 
 use Illuminate\Routing\Route;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Formats\CreateRequest;
-use Education\Http\Requests\Formats\EditRequest;
-use Education\Entities\Format;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Formats\CreateRequest;
+use Tenderos\Http\Requests\Formats\EditRequest;
+use Tenderos\Entities\Format;
 use Auth;
 use Storage;
 use Flash;

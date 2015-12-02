@@ -1,12 +1,12 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Route;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Companies\CreateRequest;
-use Education\Http\Requests\Companies\EditRequest;
-use Education\Entities\Company;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Companies\CreateRequest;
+use Tenderos\Http\Requests\Companies\EditRequest;
+use Tenderos\Entities\Company;
 use Flash;
 
 class CompaniesController extends Controller

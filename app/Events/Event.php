@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Events;
+namespace Tenderos\Events;
 
 abstract class Event
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\Controllers;
+namespace Tenderos\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

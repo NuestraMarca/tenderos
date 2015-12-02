@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\ViewComposers\Users;
+namespace Tenderos\Http\ViewComposers\Users;
 
-use Education\Entities\User;
+use Tenderos\Entities\User;
 use Illuminate\Contracts\View\View;
 
 class ListComposer

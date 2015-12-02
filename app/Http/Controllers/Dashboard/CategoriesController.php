@@ -1,14 +1,14 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Database\QueryException;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Categories\CreateRequest;
-use Education\Http\Requests\Categories\EditRequest;
-use Education\Entities\Category;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Categories\CreateRequest;
+use Tenderos\Http\Requests\Categories\EditRequest;
+use Tenderos\Entities\Category;
 use Flash;
 
 class CategoriesController extends Controller

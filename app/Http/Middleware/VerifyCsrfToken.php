@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\Middleware;
+namespace Tenderos\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 

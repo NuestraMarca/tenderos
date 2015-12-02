@@ -140,10 +140,10 @@ return [
         /*
          * Application Service Providers...
          */
-        Education\Providers\AppServiceProvider::class,
-        Education\Providers\EventServiceProvider::class,
-        Education\Providers\RouteServiceProvider::class,
-        Education\Providers\ComposerServiceProvider::class,
+        Tenderos\Providers\AppServiceProvider::class,
+        Tenderos\Providers\EventServiceProvider::class,
+        Tenderos\Providers\RouteServiceProvider::class,
+        Tenderos\Providers\ComposerServiceProvider::class,
 
         /*
         * Aditional

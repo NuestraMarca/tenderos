@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\Requests\Formats;
+namespace Tenderos\Http\Requests\Formats;
 
-use Education\Http\Requests\Request;
+use Tenderos\Http\Requests\Request;
 
 class CreateRequest extends Request
 {

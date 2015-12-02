@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Jobs;
+namespace Tenderos\Jobs;
 
 use Illuminate\Bus\Queueable;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http\ViewComposers\Protocols\Generator;
+namespace Tenderos\Http\ViewComposers\Protocols\Generator;
 
 use Illuminate\Contracts\View\View;
 use Auth;

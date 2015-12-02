@@ -1,13 +1,13 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Route;
-use Education\Entities\Link;
-use Education\Entities\Protocol;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Links\CreateRequest;
-use Education\Http\Requests\Links\EditRequest;
+use Tenderos\Entities\Link;
+use Tenderos\Entities\Protocol;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Links\CreateRequest;
+use Tenderos\Http\Requests\Links\EditRequest;
 use Flash;
 
 class ProtocolLinksController extends Controller

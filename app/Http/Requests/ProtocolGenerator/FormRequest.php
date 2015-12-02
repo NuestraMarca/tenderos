@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\Requests\ProtocolGenerator;
+namespace Tenderos\Http\Requests\ProtocolGenerator;
 
-use Education\Http\Requests\Request;
+use Tenderos\Http\Requests\Request;
 
 class FormRequest extends Request
 {

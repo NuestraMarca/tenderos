@@ -1,14 +1,14 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Route;
 use Illuminate\Database\QueryException;
-use Education\Http\Controllers\Controller;
-use Education\Http\Requests\Users\CreateRequest;
-use Education\Http\Requests\Users\EditRequest;
-use Education\Http\Requests\Users\ProfileRequest;
-use Education\Entities\User;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Http\Requests\Users\CreateRequest;
+use Tenderos\Http\Requests\Users\EditRequest;
+use Tenderos\Http\Requests\Users\ProfileRequest;
+use Tenderos\Entities\User;
 use Flash;
 use Auth;
 

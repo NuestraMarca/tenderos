@@ -24,5 +24,5 @@
 <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
 
 <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
-<link rel="stylesheet" href="/assets/css/themes/{{ $template }}.min.css">
+<link rel="stylesheet" href="/assets/css/themes/flat.min.css">
 <!-- END Stylesheets -->

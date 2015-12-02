@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\Requests\Protocols;
+namespace Tenderos\Http\Requests\Protocols;
 
-use Education\Http\Requests\Request;
+use Tenderos\Http\Requests\Request;
 
 class CreateRequest extends Request
 {

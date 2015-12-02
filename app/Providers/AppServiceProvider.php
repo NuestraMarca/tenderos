@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Providers;
+namespace Tenderos\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

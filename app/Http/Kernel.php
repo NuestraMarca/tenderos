@@ -1,6 +1,6 @@
 <?php
 
-namespace Education\Http;
+namespace Tenderos\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -14,11 +14,11 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Styde\Html\Alert\Middleware::class,
-        \Education\Http\Middleware\EncryptCookies::class,
+        \Tenderos\Http\Middleware\EncryptCookies::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \Education\Http\Middleware\VerifyCsrfToken::class,
+        \Tenderos\Http\Middleware\VerifyCsrfToken::class,
     ];
 
     /**
@@ -27,10 +27,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Education\Http\Middleware\Authenticate::class,
+        'auth' => \Tenderos\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \Education\Http\Middleware\RedirectIfAuthenticated::class,
-        'logs' => \Education\Http\Middleware\AfterLogs::class,
-        'user_type' => \Education\Http\Middleware\UserType::class,
+        'guest' => \Tenderos\Http\Middleware\RedirectIfAuthenticated::class,
+        'logs' => \Tenderos\Http\Middleware\AfterLogs::class,
+        'user_type' => \Tenderos\Http\Middleware\UserType::class,
     ];
 }

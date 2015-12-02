@@ -30,7 +30,7 @@
             "database"
         ],
         "psr-4": {
-            "Education\\": "app/"
+            "Tenderos\\": "app/"
         }
     },
     "autoload-dev": {

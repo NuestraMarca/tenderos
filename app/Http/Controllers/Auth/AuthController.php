@@ -1,19 +1,12 @@
-<?php
+<?php namespace Tenderos\Http\Controllers\Auth;
 
-namespace Education\Http\Controllers\Auth;
-
-use Education\Entities\User;
-use Validator;
-use Education\Http\Controllers\Controller;
-
+use Tenderos\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 
-use Illuminate\Http\Request;
+class AuthController extends Controller {
 
-class AuthController extends Controller
-{
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -27,23 +20,27 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    public $redirectPath = '/';
-    private $maxLoginAttempts = 1;
-    private $lockoutTime = 10;
+    private $loginView              = 'auth.login.form';
+    private $loginTerms             = 'auth.login.terms';
+    private $registerView           = 'auth.register.options';
+    private $registerProducerView   = 'auth.register.producer';
+    private $registerShopkeeperView = 'auth.register.shopkeeper';
+    private $username               = 'username';
 
     /**
      * Create a new authentication controller instance.
+     *
+     * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout', 'getTerms', 'postTerms']]);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -56,66 +53,64 @@ class AuthController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param array $data
-     *
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
-    /**
-     * Handle a login request to the application.
-     *
-     * @param \Illuminate\Http\Request $request
+     * Show the application login form.
      *
      * @return \Illuminate\Http\Response
      */
-    public function postLogin(Request $request)
+    public function getLogin()
     {
-        $this->validate($request, [
-            'username' => 'required', 'password' => 'required',
-        ]);
-
-        $credentials = $this->getCredentials($request);
-
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-            return redirect()->intended($this->redirectPath());
-        }
-
-        return redirect($this->loginPath())
-            ->withInput($request->only('username', 'remember'))
-            ->withErrors([
-                'username' => $this->getFailedLoginMessage(),
-            ]);
+        return view($this->loginView);
     }
 
     /**
-     * Get the needed authorization credentials from the request.
+     * Show the application terms form.
      *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
+     * @return \Illuminate\Http\Response
      */
-    protected function getCredentials(Request $request)
+    public function getTerms()
     {
-        return $request->only('username', 'password');
+        return view($this->loginTerms);
     }
 
     /**
-     * Get the failed login message.
+     * Send Post application terms.
      *
-     * @return string
+     * @return \Illuminate\Http\Response
      */
-    protected function getFailedLoginMessage()
+    public function postTerms()
     {
-        return 'El usuario y la contraseña no coinciden.';
+        Auth::user()->acceptTerms();
+        return redirect()->to('/');
     }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getRegister()
+    {
+        return view($this->registerView);
+    }
+
+    /**
+     * Show the application Producer registration
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getRegisterProducer()
+    {
+        return view($this->registerProducerView);
+    }
+
+    /**
+     * Show the application Producer registration
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getRegisterShopkeeper()
+    {
+        return view($this->registerShopkeeperView);
+    }
+
 }

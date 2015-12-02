@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\Requests\Categories;
+namespace Tenderos\Http\Requests\Categories;
 
-use Education\Http\Requests\Request;
+use Tenderos\Http\Requests\Request;
 use Illuminate\Routing\Route;
 
 class EditRequest extends Request

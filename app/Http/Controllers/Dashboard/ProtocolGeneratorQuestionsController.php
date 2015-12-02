@@ -1,15 +1,15 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard;
+namespace Tenderos\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Route;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
-use Education\Http\Requests;
-use Education\Http\Requests\ProtocolGenerator\OrderRequest;
-use Education\Http\Controllers\Controller;
-use Education\Entities\Question;
+use Tenderos\Http\Requests;
+use Tenderos\Http\Requests\ProtocolGenerator\OrderRequest;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Entities\Question;
 use Auth, Log;
 
 class ProtocolGeneratorQuestionsController extends Controller

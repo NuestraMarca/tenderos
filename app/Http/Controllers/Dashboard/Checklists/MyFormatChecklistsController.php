@@ -1,12 +1,12 @@
 <?php
 
-namespace Education\Http\Controllers\Dashboard\Checklists;
+namespace Tenderos\Http\Controllers\Dashboard\Checklists;
 
 use Illuminate\Routing\Route;
-use Education\Http\Controllers\Controller;
-use Education\Entities\Format;
-use Education\Entities\Checklist;
-use Education\Http\Requests\Checklists\CreateRequest;
+use Tenderos\Http\Controllers\Controller;
+use Tenderos\Entities\Format;
+use Tenderos\Entities\Checklist;
+use Tenderos\Http\Requests\Checklists\CreateRequest;
 use Auth;
 use Flash;
 use App;

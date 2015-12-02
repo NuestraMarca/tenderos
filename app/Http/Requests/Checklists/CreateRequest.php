@@ -1,8 +1,8 @@
 <?php
 
-namespace Education\Http\Requests\Checklists;
+namespace Tenderos\Http\Requests\Checklists;
 
-use Education\Http\Requests\Request;
+use Tenderos\Http\Requests\Request;
 
 class CreateRequest extends Request
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Education\Console\Commands;
+namespace Tenderos\Console\Commands;
 
 use Illuminate\Console\Command;
-use Education\Entities\Voter;
+use Tenderos\Entities\Voter;
 use Log;
 
 class UpdatePollingStations extends Command
