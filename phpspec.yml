@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Education
+        psr4_prefix: Education
+        src_path: app
