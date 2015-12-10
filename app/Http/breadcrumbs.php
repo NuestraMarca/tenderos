@@ -75,10 +75,10 @@ Breadcrumbs::register('roles.role', function ($breadcrumbs, $role) {
     }
 });
 
-// Home > Categories
+// Admin > Categories
 Breadcrumbs::register('categories', function ($breadcrumbs) {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Categoría', route('categories.index'));
+    //$breadcrumbs->parent('home');
+    $breadcrumbs->push('Categorías', route('admin.categories.index'));
 });
 
 // Home > Categories > Category
@@ -86,11 +86,25 @@ Breadcrumbs::register('categories.category', function ($breadcrumbs, $category) 
     $breadcrumbs->parent('categories');
 
     if ($category->exists) {
-        $breadcrumbs->push($category->name, route('categories.show', $category->id));
-    } else {
-        $breadcrumbs->push('Nuevo', route('categories.create'));
+        $breadcrumbs->push($category->name, route('admin.categories.show', $category->id));
+    } 
+    else {
+        //$breadcrumbs->push('Nuevo', route('categories.create'));
     }
 });
+
+// Home > Categories > Category > Product
+Breadcrumbs::register('categories.category.product', function ($breadcrumbs, $category, $product) {
+    $breadcrumbs->parent('categories.category', $category);
+
+    if ($product->exists) {
+        $breadcrumbs->push($category->name, route('admin.categories.products.show', [$category->id, $product->id]));
+    } 
+    else {
+        //$breadcrumbs->push('Nuevo', route('categories.create'));
+    }
+});
+
 
 // Home > Protocols
 Breadcrumbs::register('protocols', function ($breadcrumbs) {

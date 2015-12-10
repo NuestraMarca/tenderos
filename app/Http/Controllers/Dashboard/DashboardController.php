@@ -29,10 +29,11 @@ class DashboardController extends Controller
     	if(Auth::user()->isShopkeeper()) {
     		return view('dashboard.pages.shopkeeper', ['chatChannel' => $this->chatChannel . $this->user->id]);	
     	}
-    	else {
+    	else if(Auth::user()->isProducer()) {
     		return view('dashboard.pages.producer', ['chatChannel' => $this->chatChannel . $this->user->id]);
     	}
-        
+
+        return redirect()->route('admin.categories.index');
     }
 
     public function postMessage(Request $request)

@@ -30,15 +30,12 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::controller('products', 'ShopKeeper\ProductsController');
     Route::controller('productions', 'Producer\ProductionsController');
-});
+    Route::controller('services', 'Services\ServicesController');
 
-Route::group(['middleware' => ['auth'], 'namespace' => 'Services'], function () {
-	Route::controller('services', 'ServicesController');
-});
-
-Route::get('test', function(){
-	dd(Session::registered()->get());
-	return view('test', ['chatChannel' => 'chat']);
+    Route::group(['middleware' => ['user_type:admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    	Route::resource('categories', 'CategoriesController');
+    	Route::resource('categories.products', 'CategoriesProductsController');
+	});
 });
 
 
