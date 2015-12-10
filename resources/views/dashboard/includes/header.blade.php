@@ -45,7 +45,7 @@
                 <li class="dropdown-header">
                     <strong>{{ ucwords(Auth::user()->name) }}</strong>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="page_app_email.html">
                         <i class="fa fa-inbox fa-fw pull-right"></i>
                         Mensajes
@@ -69,7 +69,7 @@
                         <i class="gi gi-lock fa-fw pull-right"></i>
                         Bloquear
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="/auth/logout">
                         <i class="fa fa-power-off fa-fw pull-right"></i>

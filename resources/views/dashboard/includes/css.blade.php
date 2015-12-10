@@ -32,7 +32,12 @@
 
 <link rel="stylesheet" href="/assets/css/themes/system.css">
 
-<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/glyphicon.css">
+
+<link href="/assets/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+<link href="/assets/bootstrap3-editable-1.5.1/inputs-ext/typeaheadjs/lib/typeahead.js-bootstrap.css" rel="stylesheet">
+<link href="/assets/bootstrap3-editable-1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
+<link href="/assets/bootstrap3-editable-1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysiwyg-color.css" rel="stylesheet">
 <!-- END Stylesheets -->
 
 <style type="text/css">

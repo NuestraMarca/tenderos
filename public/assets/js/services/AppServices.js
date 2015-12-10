@@ -75,6 +75,9 @@ var AppServices = function() {
 			var url 		= '/users/' +  entityId;
 
 			postDelete(entityElement, entityId, url);
+		},
+		notification: function (type, message) {
+			notification(type, message);
 		}
 
 	};

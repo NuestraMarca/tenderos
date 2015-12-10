@@ -19,9 +19,17 @@
                 @yield('title_auth')
             </h1>
 
-            <img src="/images/placeholders/logos/company_1.png" class="col-md-4">
-            <img src="/images/placeholders/logos/company_1.png" class="col-md-4">
-            <img src="/images/placeholders/logos/company_1.png" class="col-md-4">
+            <div class="row">
+                <div class="col-xs-4 text-center">
+                    <img src="/images/placeholders/logos/company_1.png" style="width:100%;">
+                </div>
+                <div class="col-xs-4 text-center">
+                    <img src="/images/placeholders/logos/company_1.png" style="width:100%;">
+                </div>
+                <div class="col-xs-4 text-center">
+                    <img src="/images/placeholders/logos/company_1.png" style="width:100%;">
+                </div>
+            </div>
 
             {{-- END Header --}}
         </div>

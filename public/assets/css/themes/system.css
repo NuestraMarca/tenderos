@@ -103,6 +103,10 @@ thead th.fc-widget-header,
     border-color: #ebeff2;
 }
 
+.block-title ul.nav-tabs > li.active > a{
+    color: white;
+}
+
 fieldset legend,
 .form-bordered .form-group {
     border-bottom-color: #ebeff2;
@@ -113,7 +117,7 @@ fieldset legend,
 .block-title .nav-tabs > li.active > a:focus,
 .switch-default input:checked + span,
 .csscheckbox-default input:checked + span:after {
-    background-color: #dae2e8;
+    background-color: #0072C6;
 }
 
 .block .block,

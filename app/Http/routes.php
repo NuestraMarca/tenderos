@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Tenderos\Events\TestPusherEvent;
+use Tenderos\Entities\User;
+use Tenderos\Entities\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +24,22 @@ Route::controllers([
 ]);
 
 /* App **/
-Route::group(['middleware' => ['auth'], 'namespace' => 'Dashboard'], function () {
-    Route::get('/', ['as' => 'home', 'uses' => 'DashboardController@index']);
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@index']);
+    Route::post('message', ['as' => 'message', 'uses' => 'Dashboard\DashboardController@postMessage']);
+    
+    Route::controller('products', 'ShopKeeper\ProductsController');
+    Route::controller('productions', 'Producer\ProductionsController');
 });
+
+Route::group(['middleware' => ['auth'], 'namespace' => 'Services'], function () {
+	Route::controller('services', 'ServicesController');
+});
+
+Route::get('test', function(){
+	dd(Session::registered()->get());
+	return view('test', ['chatChannel' => 'chat']);
+});
+
+
+

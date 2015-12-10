@@ -9,4 +9,16 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 abstract class Controller extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
+
+    protected function getFormatSelect2(array $items)
+    {
+    	$json = [];
+
+        foreach ($items as $key => $value) {
+            array_push($json, ['id' => $key, 'text' => $value]);
+        }
+
+        return $json;
+
+    }
 }

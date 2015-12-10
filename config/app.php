@@ -155,6 +155,7 @@ return [
         Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Vinkla\Pusher\PusherServiceProvider::class,
     ],
 
     /*

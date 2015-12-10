@@ -1,6 +1,8 @@
 <?php namespace Tenderos\Http\Controllers\Auth;
 
 use Tenderos\Http\Controllers\Controller;
+use Tenderos\Entities\User;
+use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -26,6 +28,7 @@ class AuthController extends Controller {
     private $registerProducerView   = 'auth.register.producer';
     private $registerShopkeeperView = 'auth.register.shopkeeper';
     private $username               = 'username';
+    protected $redirectPath         = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -46,10 +49,24 @@ class AuthController extends Controller {
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'name'              => 'required|max:255',
+            'email'             => 'required|email|max:255|unique:users',
+            'username'          => 'required|max:255|unique:users',
+            'password'          => 'required|confirmed|min:6',
+            'municipality_id'   => 'required|exists:municipalities,id',
+            'terms'             => 'required'
         ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return User::create($data);
     }
 
     /**

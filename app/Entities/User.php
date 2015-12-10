@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Hash;
+use Hash, Auth;
 use Storage;
 use File;
 use Carbon\Carbon;
@@ -22,6 +22,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var string
      */
     protected $table = 'users';
+    protected $dates = ['created_at', 'updated_at'];
+    protected $appends = ['image', 'type_name'];
     public $timestamp = true;
 
     /**
@@ -29,15 +31,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    private static $singularTypes = ['superadmin' => 'super administrador', 'admin' => 'administrador', 'registered' => 'registrado'];
-    private static $pluralTypes = ['superadmin' => 'super administradores', 'admin' => 'administradores', 'registered' => 'registrados'];
+    private static $singularTypes = ['admin' => 'administrador', 'producer' => 'productor', 'shopkeeper' => 'tendero'];
+    private static $pluralTypes = ['admin' => 'administradores', 'producer' => 'productores', 'shopkeeper' => 'tenderos'];
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'username', 'tel', 'email', 'type', 'password'];
+    protected $fillable = ['name', 'username', 'tel', 'email', 'address', 'type', 'terms', 'municipality_id', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -61,9 +63,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
-    public function scopeSuperadmins($query)
+    public function scopeShopkeepers($query)
     {
-        return $query->whereType('superadmin');
+        return $query->whereType('shopkeeper');
+    }
+
+    public function scopeProducers($query)
+    {
+        return $query->whereType('producer');
     }
 
     public function scopeAdmins($query)
@@ -71,24 +78,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $query->whereType('admin');
     }
 
-    public function scopeRegistereds($query)
+    public function scopeWithMessages($query)
     {
-        return $query->whereType('registered');
+        return $query->with([
+            'messages' => function($query){
+                return $query->whereReceptorId(Auth::user()->id)
+                    ->orderBy('created_at', 'asc');
+            },
+            'receivedMessages' => function($query){
+                return $query->whereAuthorId(Auth::user()->id)
+                    ->orderBy('created_at', 'asc');
+            }
+        ]);
     }
 
-    public function canDestroy()
+    public function scopeExceptId($query, $id)
     {
-        if($this->protocolsCreated()->count() + $this->formatsCreated()->count() + 
-            $this->categoriesCreated()->count() + $this->exams()->count() == 0){
-            return true;
-        }
-
-        return false;
+        return $this->where('id', '<>', $id);
     }
 
-    public function isSuperadmin()
+    public function isShopkeeper()
     {
-        return $this->isType('superadmin');
+        return $this->isType('shopkeeper');
     }
 
     public function isAdmin()
@@ -96,9 +107,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->isType('admin');
     }
 
-    public function isRegistered()
+    public function isProducer()
     {
-        return $this->isType('registered');
+        return $this->isType('producer');
     }
 
     public function isType($type)
@@ -136,109 +147,56 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return ucfirst($this->updated_at->diffForHumans());
     }
 
-    public function company()
+    public function shoppingInterests()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsToMany(Product::class, 'shopping_interests')
+            ->withPivot(['amount', 'unit', 'id']);
     }
 
-    public function roles()
+    public function shoppingInterestsLists()
     {
-        return $this->belongsToMany(Role::class);
+        return Product::allLists(null, [], $this->shoppingInterests->lists('id')->all());
     }
 
-    public function areas()
+    public function productionProducts()
     {
-        return $this->belongsToMany(Area::class);
+        return $this->belongsToMany(Product::class, 'productions')
+            ->withPivot(['months']);
     }
 
-    public function formats()
+    public function productionProductsLists()
     {
-        return $this->morphedByMany(Format::class, 'allowed_users');
+        return Product::allLists(null, [], $this->productionProducts->lists('id')->all());
     }
 
-    public function protocols()
+    public function productions()
     {
-        return $this->morphedByMany(Protocol::class, 'allowed_users');
+        return $this->hasMany(Production::class);
     }
 
-    public function exams()
+    public function municipality()
     {
-        return $this->hasMany(Exam::class);
+        return $this->belongsTo(Municipality::class);
     }
 
-    public function protocolsCreated()
+    public function receivedMessages()
     {
-        return $this->hasMany(Protocol::class);
+        return $this->hasMany(Message::class, 'receptor_id');
     }
 
-    public function formatsCreated()
+    public function getAllMessages()
     {
-        return $this->hasMany(Format::class);
+        return $this->messages->merge($this->receivedMessages)->sortBy('created_at')->values();
     }
 
-    public function generatedProtocols()
+    public function messages()
     {
-        return $this->hasMany(GeneratedProtocol::class);
-    }
-
-    public function rolesCreated()
-    {
-        return $this->hasMany(Role::class);
-    }
-
-    public function areasCreated()
-    {
-        return $this->hasMany(Area::class);
+        return $this->hasMany(Message::class, 'author_id');
     }
 
     public function categoriesCreated()
     {
         return $this->hasMany(Category::class);
-    }
-
-    public function getExamProtocolsPending()
-    {
-        return $this->protocols->filter(function ($protocol) {
-            return $protocol->isExamPending($this);
-        });
-    }
-
-    public function getExamProtocolsOk()
-    {
-        return $this->protocols->filter(function ($protocol) {
-            return !$protocol->isExamPending($this);
-        });
-    }
-
-    public function getAreaIdListsAttribute()
-    {
-        return $this->areas->lists('id')->all();
-    }
-
-    public function getRoleIdListsAttribute()
-    {
-        return $this->roles->lists('id')->all();
-    }
-
-    public function getRoleIdOptions()
-    {
-        return $this->company->roles->lists('name', 'id')->all();
-    }
-
-    public function getAreaIdOptions()
-    {
-        return $this->company->areas->lists('name', 'id')->all();
-    }
-
-    public function syncRelations($data)
-    {
-        if (array_key_exists('areas', $data)) {
-            $this->areas()->sync($data['areas']);
-        }
-
-        if (array_key_exists('roles', $data)) {
-            $this->roles()->sync($data['roles']);
-        }
     }
 
     public function uploadImage($file)
@@ -253,16 +211,64 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return false;
     }
 
-    public function detachAndDelete()
-    {
-        $this->areas()->detach();
-        $this->roles()->detach();
-        $this->delete(); 
-    }
-
     public function acceptTerms()
     {
         $this->terms = true;
         $this->save();
     }
+
+    public static function searchProducers($productId = null, $subregion = null, $months = array())
+    {
+        $producers = self::with(['productions.product', 'municipality'])->producers()->get();
+
+        if(! is_null($productId)) {
+            $producers = $producers->reject(function ($producer) use ($productId) {
+                return $producer->productions->whereLoose('product_id', $productId)->isEmpty();
+            });
+        }
+
+        if(! is_null($subregion) && in_array($subregion, Municipality::$subregions)){
+            $producers = $producers->filter(function ($producer) use ($subregion) {
+                return $producer->municipality->subregion == $subregion;
+            });
+        }
+
+        if(! empty($months)){
+            $producers = $producers->reject(function ($producer) use ($months) {
+                return $producer->productions->filter(function ($production) use ($months) {
+                    return $production->existsMonths($months);
+                })->isEmpty();
+            });
+        } 
+
+        return $producers;    
+    } 
+
+    public static function searchShopkeepers($productId = null, $municipalities = array())
+    {
+        $shopkeepers = self::with(['shoppingInterests', 'municipality'])->shopkeepers()->get();
+
+        if(! is_null($productId)) {
+            $shopkeepers = $shopkeepers->reject(function ($producer) use ($productId) {
+                return $producer->shoppingInterests->whereLoose('id', $productId)->isEmpty();
+            });
+        }
+
+        if(! empty($municipalities)){
+            $shopkeepers = $shopkeepers->filter(function ($producer) use ($municipalities) {
+                return in_array($producer->municipality->id, $municipalities);
+            });
+        } 
+
+        return $shopkeepers;    
+    }  
+
+    public static function getOfflineWithMessages()
+    {
+        return self::whereNotIn('id', Session::getRegisteredUserIds())
+            ->withMessages()->get()
+            ->reject(function($user){
+                return $user->getAllMessages()->isEmpty();
+            });           
+    } 
 }

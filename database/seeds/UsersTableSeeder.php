@@ -2,7 +2,9 @@
 
 
 use \Illuminate\Database\Seeder;
-use Education\Entities\User;
+use Tenderos\Entities\User;
+use Tenderos\Entities\Deparment;
+use Tenderos\Entities\Municipality;
 
 class UsersTableSeeder extends Seeder
 {

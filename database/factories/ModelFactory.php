@@ -12,6 +12,10 @@
 */
 
 use Tenderos\Entities\User;
+use Tenderos\Entities\Deparment;
+use Tenderos\Entities\Municipality;
+use Tenderos\Entities\Category;
+use Tenderos\Entities\Product;
 
 
 $factory->define(User::class, function ($faker) {
@@ -22,6 +26,34 @@ $factory->define(User::class, function ($faker) {
         'password' => 123,
         'remember_token' => str_random(10),
         'type' => 'registered',
+        'tel' => $faker->phoneNumber,
+        'lat' => $faker->latitude,
+        'lng' => $faker->longitude,
+        'municipality_id' => 1
+    ];
+});
+
+$factory->define(Deparment::class, function ($faker) {
+    return [
+        'name' => $faker->unique()->city
+    ];
+});
+
+$factory->define(Municipality::class, function ($faker) {
+    return [
+        'name' => $faker->unique()->city
+    ];
+});
+
+$factory->define(Category::class, function ($faker) {
+    return [
+        'name' => $faker->unique()->name
+    ];
+});
+
+$factory->define(Product::class, function ($faker) {
+    return [
+        'name' => $faker->unique()->name
     ];
 });
 

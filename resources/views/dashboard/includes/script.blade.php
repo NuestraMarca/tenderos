@@ -12,6 +12,10 @@
 
 {!! Html::script('//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js') !!}
 
+{!! Html::script('assets/bootstrap3-editable-1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.min.js') !!}
+{!! Html::script('assets/bootstrap3-editable-1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js') !!}
+{!! Html::script('assets/bootstrap3-editable-1.5.1/inputs-ext/wysihtml5/wysihtml5.js') !!}
+
 {!! Html::script('assets/js/admin.js') !!}
 {!! Html::script('/assets/js/services/AppServices.js') !!}
 

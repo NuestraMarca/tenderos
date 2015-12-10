@@ -4,12 +4,11 @@
             <i class="fa fa-cube"></i> <strong> {{ env('APP_NAME') }} </strong>
         </h1>
     @endsection
-    @section('buttons_header')
-        <a href="/" class="btn btn-effect-ripple btn-primary" data-toggle="tooltip" data-placement="left" title="Olvidaste tu contraseña?"><i class="fa fa-exclamation-circle"></i></a>
-    @endsection
+
     @section('title_header')
         <h2>Iniciar Sesión</h2>
     @endsection
+    
     @section('form_auth')
         {!! Form::open(array('url' => 'auth/login', 'method' => 'post', 'class' => 'form-horizontal', 'id' => 'form-login')) !!}
 
