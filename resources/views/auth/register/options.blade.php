@@ -12,8 +12,8 @@
 @section ('content_body')
     
     <div class="row" style="margin: auto;">
-    	<div class="col-md-6 col-md-offset-3" style="position:absolute; top:30%;">
-    		<div class="col-sm-5 col-md-offset-1">
+    	<div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12" style="position:absolute; top:30%;">
+    		<div class="col-sm-5 col-sm-offset-1 col-xs-6">
 				<a href="/auth/register-shopkeeper" class="widget">
 					<div class="widget-content text-center">
 						<img src="/images/placeholders/avatars/avatar6@2x.jpg" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar-2x">
@@ -24,7 +24,7 @@
 				</a>
 			</div>
 
-			<div class="col-sm-5">
+			<div class="col-sm-5 col-xs-6">
 				<a href="/auth/register-producer" class="widget">
 					<div class="widget-content text-center">
 						<img src="/images/placeholders/avatars/avatar6@2x.jpg" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar-2x">
