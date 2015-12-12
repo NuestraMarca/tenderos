@@ -1,6 +1,5 @@
 <?php
 
-
 use \Illuminate\Database\Seeder;
 use Tenderos\Entities\User;
 use Tenderos\Entities\Deparment;
@@ -14,7 +13,11 @@ class UsersTableSeeder extends Seeder
         factory(User::class, 'shopkeeper_default')->create();
         factory(User::class, 'producer_default')->create();
 
-        factory(User::class, 'shopkeeper', 10)->create();
-        factory(User::class, 'producer', 10)->create();
+        dd(app()->environment());
+
+        if(env('APP_ENV') == 'local') {
+        	factory(User::class, 'shopkeeper', 10)->create();
+        	factory(User::class, 'producer', 10)->create();	
+        }
     }
 }
