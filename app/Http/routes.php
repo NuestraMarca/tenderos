@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@index']);
     Route::post('message', ['as' => 'message', 'uses' => 'Dashboard\DashboardController@postMessage']);
     
-    Route::controller('products', 'ShopKeeper\ProductsController');
+    Route::controller('products', 'Shopkeeper\ProductsController');
     Route::controller('productions', 'Producer\ProductionsController');
     Route::controller('services', 'Services\ServicesController');
 
