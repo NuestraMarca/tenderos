@@ -57,7 +57,7 @@
         <div class="header-section">
             <div class="row">
                 <div class="col-sm-7 col-md-8 col-lg-9 content-float-hor push-bit-top-bottom clearfix">
-                    <img src="images/placeholders/avatars/avatar14.jpg" alt="User Image" class="img-circle img-thumbnail img-thumbnail-avatar pull-left">
+                    <img src="{{ Auth::user()->image }}" alt="User Image" class="img-circle img-thumbnail img-thumbnail-avatar pull-left">
                     <h1>{{ Auth::user()->name }}</h1>
                     <h2 class="text-light-op"> Soy @yield('user_type') </h2>
                 </div>

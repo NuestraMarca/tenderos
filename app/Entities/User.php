@@ -39,7 +39,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'username', 'tel', 'email', 'address', 'type', 'terms', 'municipality_id', 'password'];
+    protected $fillable = ['name', 'username', 'doc', 'tel', 'email', 'address', 'type', 'terms', 'municipality_id', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -137,7 +137,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return '/storage/users/'.$this->id.'/profile.jpg';
         }
 
-        return env('URL_USER_PHOTO_DEMO').'?'.time();
+        if($this->isProducer()){
+            return env('URL_USER_PHOTO_PRODUCER').'?'.time();    
+        }
+        else if($this->isShopkeeper()){
+            return env('URL_USER_PHOTO_SHOPKEEPER').'?'.time();    
+        }
+
+        return env('URL_USER_PHOTO_DEMO').'?'.time();    
+
+        
     }
 
     public function getUpdatedAtHummansAttribute()

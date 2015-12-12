@@ -40,6 +40,8 @@
 
                 {!! Field::password('password_confirmation', ['placeholder' => 'Confirmar Contraseña..', 'template' => 'themes.bootstrap.fields.empty']) !!}
 
+                {!! Field::number('doc', null, ['placeholder' => 'Número de Cédula', 'template' => 'themes.bootstrap.fields.empty']) !!}
+
                 {!! Field::text('name', null, ['placeholder' => 'Nombre..', 'template' => 'themes.bootstrap.fields.empty']) !!}
 
                 {!! Field::email('email', null, ['placeholder' => 'Correo Electronico..', 'template' => 'themes.bootstrap.fields.empty']) !!}

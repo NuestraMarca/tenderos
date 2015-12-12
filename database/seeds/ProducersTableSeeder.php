@@ -62,14 +62,14 @@ class ProducersTableSeeder extends Seeder
 				'name'				=> $producer['name'],
 				'doc'				=> $producer['doc'],
 				'tel'				=> $producer['tel'],
-				'username' 			=> $producer['doc'] ? $producer['doc']: $count,
+				'username' 			=> $producer['tel'] ? $producer['tel']: $count,
 				'password'			=> 123,
 				'type'				=> 'producer',
 				'municipality_id' 	=> 685,
 				'email'				=> null		
 			]);
 
-			if(! $producer['doc'])
+			if(! $producer['tel'])
 				$count ++;
 		}
     }

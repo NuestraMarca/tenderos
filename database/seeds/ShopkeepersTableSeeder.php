@@ -562,14 +562,15 @@ class ShopkeepersTableSeeder extends Seeder
 				'name'				=> $shopkeeper['name'],
 				'tel'				=> $shopkeeper['tel'],
 				'tel'				=> $shopkeeper['address'] . ' ' . $shopkeeper['neighborhood'],
-				'username' 			=> $count,
+				'username' 			=> $producer['tel'] ? $producer['tel']: $count,,
 				'password'			=> 123,
 				'type'				=> 'shopkeeper',
 				'municipality_id' 	=> 685,
 				'email'				=> null		
 			]);
 
-			$count ++;
+			if(! $producer['tel'])
+				$count ++;
 		}
     }
 }

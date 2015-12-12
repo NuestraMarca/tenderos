@@ -16,7 +16,7 @@
     		<div class="col-sm-5 col-sm-offset-1 col-xs-6">
 				<a href="/auth/register-shopkeeper" class="widget">
 					<div class="widget-content text-center">
-						<img src="/images/placeholders/avatars/avatar6@2x.jpg" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar-2x">
+						<img src="/images/placeholders/icons/Shop-512.png" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar-2x">
 					</div>
 					<div class="widget-content themed-background-muted text-dark text-center">
 						<h1 class="h3 btn btn-lg btn-primary">Soy Tendero</h1>
@@ -27,7 +27,7 @@
 			<div class="col-sm-5 col-xs-6">
 				<a href="/auth/register-producer" class="widget">
 					<div class="widget-content text-center">
-						<img src="/images/placeholders/avatars/avatar6@2x.jpg" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar-2x">
+						<img src="/images/placeholders/icons/Farmer-2-512.png" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar-2x">
 					</div>
 					<div class="widget-content themed-background-muted text-dark text-center">
 						<h1 class="h3 btn btn-lg btn-danger">Soy Productor</h1>
