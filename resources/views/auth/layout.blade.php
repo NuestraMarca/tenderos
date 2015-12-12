@@ -20,14 +20,8 @@
             </h1>
 
             <div class="row">
-                <div class="col-xs-4 text-center">
-                    <img src="/images/placeholders/logos/company_1.png" style="width:100%;">
-                </div>
-                <div class="col-xs-4 text-center">
-                    <img src="/images/placeholders/logos/company_1.png" style="width:100%;">
-                </div>
-                <div class="col-xs-4 text-center">
-                    <img src="/images/placeholders/logos/company_1.png" style="width:100%;">
+                <div class="col-xs-12 text-center">
+                    <img src="/images/placeholders/logos/juntos_construyendo.png" style="width:100%;">
                 </div>
             </div>
 
