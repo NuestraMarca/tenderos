@@ -45,7 +45,7 @@ class ShopkeepersTableSeeder extends Seeder
 		['name' => 'Patricia Espitia', 'neighborhood' => 'Emporio', 'address' => null, 'tel' => 3112678381],
 		['name' => 'Angelica Quimbaya', 'neighborhood' => 'Chapinerito', 'address' => null, 'tel' => 3114628976],
 		['name' => 'Berta Padilla', 'neighborhood' => 'Chapinerito', 'address' => 'cra 51 n°47-04', 'tel' => 3213779896],
-		['name' => 'Mercy carrian', 'neighborhood' => 'Panorama', 'address' => null, 'tel' => 3102916639],
+		['name' => 'Mercy carrian', 'neighborhood' => 'Panorama', 'address' => null, 'tel' => 31029166390],
 		['name' => 'Mariano Baquero', 'neighborhood' => 'Panorama', 'address' => null, 'tel' => 3204942907],
 		['name' => 'Armando Romero', 'neighborhood' => 'Panorama', 'address' => null, 'tel' => 3202000404],
 		['name' => 'Mariana Garcia', 'neighborhood' => 'Santa Josefa', 'address' => null, 'tel' => 3209547858],
@@ -68,8 +68,8 @@ class ShopkeepersTableSeeder extends Seeder
 		['name' => 'Daniela Rojas', 'neighborhood' => 'Villa Julia', 'address' => 'Villajulia N° 59-60', 'tel' => 3144903573],
 		['name' => 'Teresa Cruz', 'neighborhood' => 'San Isidro', 'address' => 'Cll 37 n° 26 -71', 'tel' => 3134665350],
 		['name' => 'Martha Carrillo', 'neighborhood' => 'San Isidro', 'address' => 'Cll 37 n° 26 - 79', 'tel' => 3204203026],
-		['name' => 'Cristobla Fonseca', 'neighborhood' => 'San Isidro', 'address' => 'Cll 37 n° 27 - 71', 'tel' => 3204203026],
-		['name' => 'Rosalba Carrillo', 'neighborhood' => 'San Isidro', 'address' => 'cll 37 n° 76 - 91', 'tel' => 3204203026],
+		['name' => 'Cristobla Fonseca', 'neighborhood' => 'San Isidro', 'address' => 'Cll 37 n° 27 - 71', 'tel' => 32042030260],
+		['name' => 'Rosalba Carrillo', 'neighborhood' => 'San Isidro', 'address' => 'cll 37 n° 76 - 91', 'tel' => 32042030261],
 		['name' => 'Jhon Arias Monsalve', 'neighborhood' => 'San Isidro', 'address' => 'cll 37 n° 36A - 26', 'tel' => 3133127798],
 		['name' => 'Camilo Ospina', 'neighborhood' => 'San Isidro', 'address' => 'Cll 37 n° 26 - 10', 'tel' => 3142571942],
 		['name' => 'Juan Jimenez', 'neighborhood' => 'San Isidro', 'address' => 'cll 37 n° 26 - 12', 'tel' => 3216211918],
@@ -106,7 +106,7 @@ class ShopkeepersTableSeeder extends Seeder
 		['name' => 'Martin Quintero', 'neighborhood' => 'San Isidro', 'address' => 'cll 24 n° 25 - 35', 'tel' => 3114649191],
 		['name' => 'Aldo  Santigot Romero', 'neighborhood' => 'San Isidro', 'address' => 'cll 26 n° 25 - 09', 'tel' => 3102772957],
 		['name' => 'Luz Marina Ortiz', 'neighborhood' => 'San Isidro', 'address' => 'cll 37 n° 28 - 03', 'tel' => null],
-		['name' => 'Rosalba Carriño', 'neighborhood' => 'San Isidro', 'address' => 'cra 37 n° 28 - 12', 'tel' => 3204203026],
+		['name' => 'Rosalba Carriño', 'neighborhood' => 'San Isidro', 'address' => 'cra 37 n° 28 - 12', 'tel' => 32042030262],
 		['name' => 'Gloria Villaloba', 'neighborhood' => 'San Isidro', 'address' => 'cra 26 n° 37A - 25', 'tel' => null],
 		['name' => 'Jhoan Andres Rodriguez', 'neighborhood' => 'San  Isidro', 'address' => 'cll  37a n° 26-64', 'tel' => null],
 		['name' => 'Algel Antonio Clavijo', 'neighborhood' => 'Porvenir', 'address' => 'cra 25 n° 29 - 12', 'tel' => 3213742585],
@@ -148,9 +148,9 @@ class ShopkeepersTableSeeder extends Seeder
 		['name' => 'Edwin Hernadez', 'neighborhood' => 'La Florencia', 'address' => 'cra 37B n° 18 - 05', 'tel' => 3123093616],
 		['name' => 'Flor Angela Salazar', 'neighborhood' => 'Santa Helena', 'address' => 'cll 37A n° 17B - 87', 'tel' => 3134941077],
 		['name' => 'Miguel Angel Reina', 'neighborhood' => 'El Paraiso', 'address' => 'cra 19A n° 40A - 09', 'tel' => 3132328455],
-		['name' => 'Elsy Mancilla', 'neighborhood' => 'La Florencia', 'address' => 'cra 17 n° 37 - 27', 'tel' => 3114936173],
+		['name' => 'Elsy Mancilla', 'neighborhood' => 'La Florencia', 'address' => 'cra 17 n° 37 - 27', 'tel' => 31149361730],
 		['name' => 'Ana Aide Sanabria', 'neighborhood' => 'La Ceiba', 'address' => 'cll 28A n° 15 - 93', 'tel' => 3212512976],
-		['name' => 'Andrea Trujillo', 'neighborhood' => 'La Ceiba', 'address' => 'cll 31A n° 16A - 87', 'tel' => 3133438977],
+		['name' => 'Andrea Trujillo', 'neighborhood' => 'La Ceiba', 'address' => 'cll 31A n° 16A - 87', 'tel' => 31334389770],
 		['name' => 'Fernando Castro', 'neighborhood' => 'Bambu', 'address' => 'cll 35 n° 16a - 40', 'tel' => 3138835775],
 		['name' => 'Nelson Cardenas', 'neighborhood' => 'La bastilla', 'address' => 'cll 35A n° 14A - 80', 'tel' => 3143255344],
 		['name' => 'Miriam macias', 'neighborhood' => 'Bambu', 'address' => 'cll 35 n° 16A - 64', 'tel' => 3133508255],
@@ -562,14 +562,14 @@ class ShopkeepersTableSeeder extends Seeder
 				'name'				=> $shopkeeper['name'],
 				'tel'				=> $shopkeeper['tel'],
 				'tel'				=> $shopkeeper['address'] . ' ' . $shopkeeper['neighborhood'],
-				'username' 			=> $producer['tel'] ? $producer['tel']: $count,,
+				'username' 			=> $shopkeeper['tel'] ? $shopkeeper['tel']: $count,
 				'password'			=> 123,
 				'type'				=> 'shopkeeper',
 				'municipality_id' 	=> 685,
 				'email'				=> null		
 			]);
 
-			if(! $producer['tel'])
+			if(! $shopkeeper['tel'])
 				$count ++;
 		}
     }
