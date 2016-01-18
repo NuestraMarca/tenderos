@@ -3,5 +3,5 @@
 @section ('register_title') Soy Productor @endsection
 
 @section ('inputs_extra') 
-    <input type="hidden" name="type" value="shopkeeper">
+    <input type="hidden" name="type" value="producer">
 @endsection
