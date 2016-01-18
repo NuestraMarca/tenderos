@@ -54,7 +54,8 @@ class AuthController extends Controller {
             'username'          => 'required|max:255|unique:users',
             'password'          => 'required|confirmed|min:6',
             'municipality_id'   => 'required|exists:municipalities,id',
-            'terms'             => 'required'
+            'terms'             => 'required',
+            'doc'               => 'required|unique:users'
         ]);
     }
 
