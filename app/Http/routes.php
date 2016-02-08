@@ -24,8 +24,11 @@ Route::controllers([
 ]);
 
 /* App **/
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@index']);
+
+Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@index']);
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@admin']);
     Route::post('message', ['as' => 'message', 'uses' => 'Dashboard\DashboardController@postMessage']);
     
     Route::controller('products', 'Shopkeeper\ProductsController');
@@ -37,6 +40,8 @@ Route::group(['middleware' => ['auth']], function () {
     	Route::resource('categories.products', 'CategoriesProductsController');
 	});
 });
+
+Route::get('juan', ['uses' => 'JuanController@holamundo']);
 
 
 

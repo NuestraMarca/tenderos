@@ -26,6 +26,11 @@ class DashboardController extends Controller
 
     public function index()
     {
+        return view('home');
+    }
+
+    public function admin()
+    {
     	if(Auth::user()->isShopkeeper()) {
     		return view('dashboard.pages.shopkeeper', ['chatChannel' => $this->chatChannel . $this->user->id]);	
     	}
