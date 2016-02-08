@@ -26,6 +26,7 @@ Route::controllers([
 /* App **/
 
 Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@index']);
+Route::get('documentacion', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@docs']);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@admin']);

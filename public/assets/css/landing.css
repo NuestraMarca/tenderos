@@ -48,22 +48,34 @@ body {
 }
 
 .main h3 {
-	margin-top: 1.5em;
+	margin-top: 2.5em;
 	margin-bottom: 1em;
-    font-size: 2.2em;
+    font-size: 1.5em;
     font-weight: 300;
     border-bottom: black solid 1px;
     display: inline-block;
 }
 
+.files h2{
+    text-align: center;
+    margin-top: 7em;
+}
+
 .file-icons {
-	display: block;
+    display: block;
+    text-align: center;
+    margin-top: 1em;
 }
 
 .file-icons figure {
-	display: inline-block;
-    margin: 0 1em;
+    display: inline-block;
+    margin-top: 1em;
     text-align: center;
+    width: 13em;
+}
+
+.file-icons img {
+    width: 4em;
 }
 
 .file-icons figure figcaption{
@@ -73,7 +85,7 @@ body {
 
 .footer {
     text-align: center;
-    margin-top: 2em;
+    margin-top: 10em;
 }
 
 @media (min-width: 1px) and (max-width: 768px) {

@@ -29,6 +29,11 @@ class DashboardController extends Controller
         return view('home');
     }
 
+    public function docs()
+    {
+        return view('documentacion');
+    }
+
     public function admin()
     {
     	if(Auth::user()->isShopkeeper()) {
