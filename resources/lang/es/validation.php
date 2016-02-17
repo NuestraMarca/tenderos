@@ -166,7 +166,9 @@ return array(
     'url_photo'     => 'foto de perfil',
     'applied'       => 'Aplicado',
     'observation'   => 'Observaciones',
-    'title'         => 'titulo'
+    'title'         => 'titulo',
+    'municipality_id' => 'municipio',
+    'commune'       => 'comuna'
 ),
 
 'auth' => array(

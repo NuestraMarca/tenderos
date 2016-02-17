@@ -15,9 +15,11 @@ class RegisterComposer
     public function compose(View $view)
     {
         $municipalities = Municipality::allLists();
+        $communes = [0 => 'No aplica',1,2,3,4,5,6,7,8];
         
         $view->with([
             'municipalities' => $municipalities,
+            'communes'  => $communes
         ]);
     }
 }

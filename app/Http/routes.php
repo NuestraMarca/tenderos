@@ -36,13 +36,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::controller('productions', 'Producer\ProductionsController');
     Route::controller('services', 'Services\ServicesController');
 
-    Route::group(['middleware' => ['user_type:admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    	Route::resource('categories', 'CategoriesController');
+    Route::get('stats', ['as' => 'stats', 'uses' => 'Dashboard\DashboardController@stats']);
+    Route::get('stats/commune', ['as' => 'stats-commune', 'uses' => 'Services\ServicesController@getCommuneStatistics']);
+    Route::get('stats/commune/shopping', ['as' => 'stats-commune-shopping', 'uses' => 'Services\ServicesController@getCommuneShoppingStatistics']);
+    Route::get('stats/commune/shopping/avg', ['as' => 'stats-commune-shopping', 'uses' => 'Services\ServicesController@getCommuneAvgShoppingStatistics']);
+    Route::get('stats/commune/shopping/count', ['as' => 'stats-commune-shopping', 'uses' => 'Services\ServicesController@getCommuneCountShoppingStatistics']);
+    
+    
+    Route::group(['middleware' => ['user_type:admin'], 'namespace' => 'Admin'], function () {
+        
+        Route::resource('users', 'UsersController');
+        Route::resource('categories', 'CategoriesController');
     	Route::resource('categories.products', 'CategoriesProductsController');
 	});
 });
-
-Route::get('juan', ['uses' => 'JuanController@holamundo']);
 
 
 

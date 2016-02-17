@@ -39,7 +39,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'username', 'doc', 'tel', 'email', 'address', 'type', 'terms', 'municipality_id', 'password'];
+    protected $fillable = ['name', 'username', 'doc', 'tel', 'email', 'address', 'type', 'terms', 'municipality_id', 'password', 'commune'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -71,6 +71,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function scopeProducers($query)
     {
         return $query->whereType('producer');
+    }
+
+    public function scopeNotAdmins($query)
+    {
+        return $query->where('type', '<>', 'admin');
     }
 
     public function scopeAdmins($query)

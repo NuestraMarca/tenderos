@@ -1,9 +1,8 @@
 <?php
 
-namespace Tenderos\Http\Requests\Users;
+namespace Tenderos\Http\Requests\Shopkeepers;
 
 use Tenderos\Http\Requests\Request;
-use Tenderos\Http\Controllers\Auth\AuthController;
 
 class CreateRequest extends Request
 {
@@ -23,6 +22,9 @@ class CreateRequest extends Request
      */
     public function rules()
     {
-        return AuthController::getRules();
+        return [
+            'name' => 'required|max:100',
+            'description' => 'max:254',
+        ];
     }
 }

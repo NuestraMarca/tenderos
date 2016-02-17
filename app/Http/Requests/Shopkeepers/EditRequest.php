@@ -1,6 +1,6 @@
 <?php
 
-namespace Tenderos\Http\Requests\Users;
+namespace Tenderos\Http\Requests\Shopkeepers;
 
 use Tenderos\Http\Requests\Request;
 use Illuminate\Routing\Route;
@@ -37,11 +37,6 @@ class EditRequest extends Request
     public function rules()
     {
         $rules = $this->createRequest->rules();
-        $rules['username'] .= ',username,'.$this->route->getParameter('users').',id';
-        $rules['doc'] .= ',doc,'.$this->route->getParameter('users').',id';
-        $rules['email'] .= ',email,'.$this->route->getParameter('users').',id';
-        $rules['password'] = 'confirmed';
-        $rules['terms'] = '';
 
         return $rules;
     }

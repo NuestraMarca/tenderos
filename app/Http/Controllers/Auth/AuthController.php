@@ -40,6 +40,19 @@ class AuthController extends Controller {
         $this->middleware('guest', ['except' => ['getLogout', 'getTerms', 'postTerms']]);
     }
 
+    public static function getRules()
+    {
+        return [
+            'name'              => 'required|max:255',
+            'email'             => 'required|email|max:255|unique:users',
+            'username'          => 'required|max:255|unique:users',
+            'password'          => 'required|confirmed|min:6',
+            'municipality_id'   => 'required|exists:municipalities,id',
+            'terms'             => 'required',
+            'doc'               => 'required|unique:users',
+            'commune'           => 'required'
+        ];
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -48,15 +61,7 @@ class AuthController extends Controller {
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name'              => 'required|max:255',
-            'email'             => 'required|email|max:255|unique:users',
-            'username'          => 'required|max:255|unique:users',
-            'password'          => 'required|confirmed|min:6',
-            'municipality_id'   => 'required|exists:municipalities,id',
-            'terms'             => 'required',
-            'doc'               => 'required|unique:users'
-        ]);
+        return Validator::make($data, self::getRules());
     }
 
     /**

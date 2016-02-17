@@ -7,6 +7,7 @@ use Tenderos\Http\Requests;
 use Tenderos\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Tenderos\Entities\Message;
+use Tenderos\Entities\User;
 use Auth;
 
 class DashboardController extends Controller
@@ -34,6 +35,12 @@ class DashboardController extends Controller
         return view('documentacion');
     }
 
+    public function stats()
+    {
+        $shopkeepers = User::shopkeepers()->get();
+        return view('dashboard.pages.admin.stats', compact('shopkeepers'));
+    }
+
     public function admin()
     {
     	if(Auth::user()->isShopkeeper()) {
@@ -43,7 +50,7 @@ class DashboardController extends Controller
     		return view('dashboard.pages.producer', ['chatChannel' => $this->chatChannel . $this->user->id]);
     	}
 
-        return redirect()->route('admin.categories.index');
+        return view('dashboard.pages.admin.home');
     }
 
     public function postMessage(Request $request)

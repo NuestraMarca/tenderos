@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call('CategoriesTableSeeder'); // Static
         $this->call('UsersTableSeeder'); // Static
 
-        if(env('APP_ENV') == 'production') {
+        if(env('APP_ENV') != 'production') {
             $this->call('ProducersTableSeeder'); // Static
             $this->call('ShopkeepersTableSeeder'); // Static
         }

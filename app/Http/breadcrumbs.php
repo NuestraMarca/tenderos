@@ -148,7 +148,7 @@ Breadcrumbs::register('protocols.protocol.question', function ($breadcrumbs, $pr
 // Home > Users
 Breadcrumbs::register('users', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Usuarios', route('users.index'));
+    $breadcrumbs->push('Usuarios', route('admin.users.index'));
 });
 
 // Home > Users > User
@@ -156,10 +156,8 @@ Breadcrumbs::register('users.user', function ($breadcrumbs, $user) {
     $breadcrumbs->parent('users');
 
     if ($user->exists) {
-        $breadcrumbs->push($user->name, route('users.show', $user->id));
-    } else {
-        $breadcrumbs->push('Nueva', route('users.create'));
-    }
+        $breadcrumbs->push($user->name, route('admin.users.edit', $user->id));
+    } 
 });
 
 // Home > Study 

@@ -13,7 +13,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composers([
-            'Tenderos\Http\ViewComposers\Users\RegisterComposer' => 'auth.register.form',
+            'Tenderos\Http\ViewComposers\Users\RegisterComposer' => ['auth.register.form', 'dashboard.pages.admin.users.form'],
             'Tenderos\Http\ViewComposers\SubregionsComposer' => 'dashboard.pages.shopkeeper',
             'Tenderos\Http\ViewComposers\MonthsComposer' => 'dashboard.pages.shopkeeper',
             'Tenderos\Http\ViewComposers\HomeComposer' => ['dashboard.pages.shopkeeper', 'dashboard.pages.producer'],

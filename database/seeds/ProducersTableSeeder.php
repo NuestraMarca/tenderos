@@ -2,6 +2,7 @@
 
 use \Illuminate\Database\Seeder;
 use Tenderos\Entities\User;
+use Illuminate\Database\QueryException;
 
 class ProducersTableSeeder extends Seeder
 {
@@ -57,20 +58,25 @@ class ProducersTableSeeder extends Seeder
     	$count = 5001;
 
 		foreach ($this->producers as $producer) {
-			
-			User::create([
-				'name'				=> $producer['name'],
-				'doc'				=> $producer['doc'],
-				'tel'				=> $producer['tel'],
-				'username' 			=> $producer['tel'] ? $producer['tel']: $count,
-				'password'			=> 123,
-				'type'				=> 'producer',
-				'municipality_id' 	=> 685,
-				'email'				=> null		
-			]);
+			try {
+				User::create([
+					'name'				=> $producer['name'],
+					'doc'				=> $producer['doc'],
+					'tel'				=> $producer['tel'],
+					'username' 			=> $producer['tel'] ? $producer['tel']: $count,
+					'password'			=> 123,
+					'type'				=> 'producer',
+					'municipality_id' 	=> 685,
+					'email'				=> null		
+				]);
 
-			if(! $producer['tel'])
-				$count ++;
+				if(! $producer['tel'])
+					$count ++;	
+				
+			} catch (QueryException $e) {
+				
+			}
+			
 		}
     }
 }

@@ -9,10 +9,10 @@ class CategoriesTableSeeder extends Seeder
 	private $productsArray = [
 		'tuberculos' 	=> ['papa', 'yuca', 'arracacha'],
 		'verdura' 		=> ['cebolla cabezona roja', 'cebolla cabezona blanca', 'cebolla larga'],
-		'platano' 		=> ['hartón', 'topocho', 'banano'],
-		'hortalizas' 	=> ['tomate', 'lechuga', 'calabaza', 'pepino'],
+		'platano' 		=> ['platano', 'hartón', 'topocho', 'banano'],
+		'hortalizas' 	=> ['hortalizas', 'tomate', 'lechuga', 'calabaza', 'pepino'],
 		'citricos' 		=> ['limón mandarino', 'mandarina', 'limón castilla', 'naranja'],
-		'frutas' 		=> ['papaya', 'aguacate', 'mango', 'guayaba', 'mora', 'lulo']
+		'frutas' 		=> ['frutas', 'papaya', 'aguacate', 'mango', 'guayaba', 'mora', 'lulo']
 	];
 
     public function run()

@@ -48,9 +48,11 @@
 
                 {!! Field::text('tel', null, ['placeholder' => 'Télefono', 'template' => 'themes.bootstrap.fields.empty']) !!}
 
-                {!! Field::text('address', null, ['placeholder' => 'Dirección', 'template' => 'themes.bootstrap.fields.empty']) !!}
-
                 {!! Field::select('municipality_id', $municipalities, ['data-placeholder' => 'Seleccione un municipio..', 'template' => 'themes.bootstrap.fields.empty', 'class' => 'select-chosen']) !!}
+
+                {!! Field::select('commune', $communes, ['data-placeholder' => 'Seleccione una comuna..', 'template' => 'themes.bootstrap.fields.empty', 'class' => 'select-chosen']) !!}
+
+                {!! Field::text('address', null, ['placeholder' => 'Dirección', 'template' => 'themes.bootstrap.fields.empty']) !!}
 
                 @yield('inputs_extra')
 
