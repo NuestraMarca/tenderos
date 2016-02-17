@@ -103,7 +103,7 @@ class AuthController extends Controller {
     public function postTerms()
     {
         Auth::user()->acceptTerms();
-        return redirect()->to('/');
+        return redirect()->to('/admin');
     }
 
     /**
