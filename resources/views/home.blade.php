@@ -19,6 +19,7 @@
 		</div>
 		<div class="files">
 			<a href="/documentacion"><h3>Documentación</h3></a>
+			<a href="/estadisticas" style="margin-left: 1em;"><h3>Estadisticas</h3></a>
 		</div>
 		<div class="footer">
 			<img src="/images/placeholders/logos/juntos_construyendo.png" class="gobernacion">

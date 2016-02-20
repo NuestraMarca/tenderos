@@ -292,4 +292,36 @@ class ServicesController extends Controller
         return $stat;
     }
 
+    public function getCommunesStatistics(Request $request)
+    {
+        $commune = ($request->get('commune')) ? $request->get('commune') : 1;
+
+        $products = ShoppingInterest::select('product_id', 'products.name', \DB::raw('SUM(amount) as total'))
+            ->join('users', 'users.id', '=', 'user_id')
+            ->join('products', 'products.id', '=', 'product_id')
+            ->whereUnit('kg')
+            ->whereCommune($commune)
+            ->orderBy('product_id', 'asc')
+            ->groupBy('product_id')
+            ->get();
+
+        $stat = [
+            'content' => [
+                ['label' => 'Compra de Producto en KG', 'data' => [] ],
+            ],
+            'names' => []
+        ];
+
+        $count = 0;
+
+        foreach ($products as $product) {
+            array_push($stat['content'][0]['data'], [$count, $product->total]);    
+            array_push($stat['names'], [$count + 0.5, $product->name . ' (' . $product->total . ') ']);
+
+            $count += 1.5;
+        }
+
+        return $stat;
+    }
+
 }

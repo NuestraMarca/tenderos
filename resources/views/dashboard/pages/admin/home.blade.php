@@ -28,7 +28,7 @@
     </div>
 
     <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-        <a href="/admin/stats" class="widget text-center">
+        <a href="/estadisticas" class="widget text-center">
 			<div class="widget-content">
 				<i class="gi gi-stats fa-4x text-dark"></i>
 			</div>

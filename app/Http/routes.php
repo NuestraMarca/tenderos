@@ -28,6 +28,22 @@ Route::controllers([
 Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@index']);
 Route::get('documentacion', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@docs']);
 
+Route::group(['prefix' => 'estadisticas'], function () {
+    Route::get('/', ['as' => 'stats.home', 'uses' => 'Stats\StatsController@index']);
+    Route::get('compra-de-tenderos', ['as' => 'stats.commune-shopping-count', 'uses' => 'Stats\StatsController@getCommuneCountShoppingStatistics']);
+    Route::get('compra-de-productos', ['as' => 'stats.commune-shopping', 'uses' => 'Stats\StatsController@getCommuneShoppingStatistics']);
+    Route::get('promedio-de-compras', ['as' => 'stats.commune-shopping-avg', 'uses' => 'Stats\StatsController@getCommuneAvgShoppingStatistics']);
+    Route::get('por-comunas', ['as' => 'stats.communes', 'uses' => 'Stats\StatsController@getCommunesStatistics']);
+});
+
+Route::group(['prefix' => 'stats'], function () {
+    Route::get('commune', ['as' => 'stats-commune', 'uses' => 'Services\ServicesController@getCommuneStatistics']);
+    Route::get('commune/shopping/count', ['as' => 'stats-commune-shopping-count', 'uses' => 'Services\ServicesController@getCommuneCountShoppingStatistics']);
+    Route::get('commune/shopping', ['as' => 'stats-commune-shopping', 'uses' => 'Services\ServicesController@getCommuneShoppingStatistics']);
+    Route::get('commune/shopping/avg', ['as' => 'stats-commune-shopping-avg', 'uses' => 'Services\ServicesController@getCommuneAvgShoppingStatistics']);
+    Route::get('communes', ['as' => 'stats-communes', 'uses' => 'Services\ServicesController@getCommunesStatistics']);
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', ['as' => 'home', 'uses' => 'Dashboard\DashboardController@admin']);
     Route::post('message', ['as' => 'message', 'uses' => 'Dashboard\DashboardController@postMessage']);
@@ -35,13 +51,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::controller('products', 'Shopkeeper\ProductsController');
     Route::controller('productions', 'Producer\ProductionsController');
     Route::controller('services', 'Services\ServicesController');
-
-    Route::get('stats', ['as' => 'stats', 'uses' => 'Dashboard\DashboardController@stats']);
-    Route::get('stats/commune', ['as' => 'stats-commune', 'uses' => 'Services\ServicesController@getCommuneStatistics']);
-    Route::get('stats/commune/shopping', ['as' => 'stats-commune-shopping', 'uses' => 'Services\ServicesController@getCommuneShoppingStatistics']);
-    Route::get('stats/commune/shopping/avg', ['as' => 'stats-commune-shopping', 'uses' => 'Services\ServicesController@getCommuneAvgShoppingStatistics']);
-    Route::get('stats/commune/shopping/count', ['as' => 'stats-commune-shopping', 'uses' => 'Services\ServicesController@getCommuneCountShoppingStatistics']);
-    
     
     Route::group(['middleware' => ['user_type:admin'], 'namespace' => 'Admin'], function () {
         
