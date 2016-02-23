@@ -50,8 +50,6 @@ class Production extends Model
         $this->attributes['months'] = implode(',', $value);
     }
 
-    
-
     public function getMonthsCollection()
     {
         return collect(explode(',', $this->months));

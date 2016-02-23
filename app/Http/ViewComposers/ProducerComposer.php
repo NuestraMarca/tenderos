@@ -5,7 +5,6 @@ namespace Tenderos\Http\ViewComposers;
 use Illuminate\Contracts\View\View;
 use Tenderos\Entities\User;
 use Tenderos\Entities\Product;
-use Tenderos\Entities\Municipality;
 use Auth;
 
 class ProducerComposer
@@ -18,11 +17,12 @@ class ProducerComposer
     public function compose(View $view)
     {
         $products           = Product::allLists();
-        $shopkeepers        = User::with(['shoppingInterests', 'municipality'])->shopkeepers()->orderBy('created_at')->take(12)->get();
-        $municipalities     = Municipality::allLists();
+        $shopkeepers        = User::searchShopkeepers();
+        $communes           = ['1' => 'Comuna 1', '2' => 'Comuna 2', '3' => 'Comuna 3', '4' => 'Comuna 4', 
+                                '5' => 'Comuna 5', '6' => 'Comuna 6', '7' => 'Comuna 7', '8' => 'Comuna 8'];
 
         $view->with([
-        	'municipalities'	=> $municipalities,
+        	'communes'	=> $communes,
             'products'          => $products,
             'shopkeepers'       => $shopkeepers
         ]);

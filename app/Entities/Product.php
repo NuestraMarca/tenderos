@@ -33,6 +33,11 @@ class Product extends Model
         return $query->where('name', 'like', '%'.$name.'%');
     }
 
+    public function scopeJoinShoppingInterest($query)
+    {
+        return $query->join('shopping_interests', 'products.id', '=', 'shopping_interests.product_id');
+    }
+
     public static function allLists($name = '', array $execptProductIds = array(), array $onlyProductIds = null)
     {
         $products = self::with('category')
@@ -50,5 +55,19 @@ class Product extends Model
 
         return $products;
     } 
+
+    public static function getAllWithProduction()
+    {
+        return self::joinShoppingInterest()
+            ->groupBy('products.id')
+            ->get();
+    }
+
+    public static function getAllWithProductionLists()
+    {
+        return self::getAllWithProduction()
+            ->lists('category_name_name', 'id')
+            ->all();
+    }
 
 }

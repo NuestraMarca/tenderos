@@ -44,8 +44,9 @@ class ServicesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getShoppingInterests(Request $request)
-    {           
-        $products = $this->getFormatSelect2(Auth::user()->shoppingInterestsLists());
+    {        
+        //$products = $this->getFormatSelect2(Auth::user()->shoppingInterestsLists());
+        $products = $this->getFormatSelect2(Product::allLists());
 
         return response()->json($products);
     }
@@ -57,7 +58,8 @@ class ServicesController extends Controller
      */
     public function getProductionProducts(Request $request)
     {           
-        $products = $this->getFormatSelect2(Auth::user()->productionProductsLists());
+        // $products = $this->getFormatSelect2(Auth::user()->productionProductsLists());
+        $products = $this->getFormatSelect2(Product::getAllWithProductionLists());
 
         return response()->json($products);
     }
@@ -108,9 +110,9 @@ class ServicesController extends Controller
     public function getShopkeepers(Request $request)
     {   
         $productId      = $request->get('product_id');   
-        $municipalities = $request->get('municipalities');
+        $communes       = $request->get('communes');
 
-        $shopkeepers  = User::searchShopkeepers($productId, $municipalities); 
+        $shopkeepers  = User::searchShopkeepers($productId, $communes); 
 
         return response()->json(['success' => true, 'shopkeepers' => $shopkeepers]);
     }

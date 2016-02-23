@@ -16,7 +16,7 @@ class ShopkeeperComposer
      */
     public function compose(View $view)
     {
-    	$producers  = User::with(['productions.product', 'municipality'])->producers()->orderBy('created_at')->take(12)->get();
+    	$producers  = User::with(['productions.product', 'municipality'])->producers()->orderBy('created_at')->take(60)->get();
         $products   = Auth::user()->shoppingInterestsLists();
         
         $view->with([

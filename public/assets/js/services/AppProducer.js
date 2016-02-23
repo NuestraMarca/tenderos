@@ -18,8 +18,10 @@ var AppProducer = function() {
 			'<tr class="animation-fadeInQuick2">' + 
 				'<td>' + 
 					'<h4><strong>' + productName + '</strong></h4>' +
-					'<span class="label label-primary">' + amount + ' ' + unit + '</span> ' +
 				'</td>' + 
+				'<td>' +
+					'<span class="label label-primary">' + amount + ' ' + unit + '</span> ' +
+				'</td>' +
 			'</tr>'; 
 
 		return item;
@@ -67,11 +69,15 @@ var AppProducer = function() {
 	}
 
 	var newModalShoppingInterestItems = function (shopkeeper) {
+
+		console.log(shopkeeper);
+		console.log(shopkeeper.shopping_interests);
+		
 		htmlShoppingInterests = '';
 
-		if (typeof shopkeeper.shoppingInterests !== 'undefined' && ! $.isEmptyObject(shopkeeper.shoppingInterests)) {
-		    $.each(shopkeeper.shoppingInterests, function( index, product ) {
-				htmlShoppingInterests += newModalProductionItem(product.name, product.pivot.amount, product.pivot.unit);  
+		if (typeof shopkeeper.shopping_interests !== 'undefined' && ! $.isEmptyObject(shopkeeper.shopping_interests)) {
+		    $.each(shopkeeper.shopping_interests, function( index, product ) {
+				htmlShoppingInterests += newModalShoppingInterestItem(product.name, product.pivot.amount, product.pivot.unit);  
 			});
 		}
 		else {
@@ -110,11 +116,11 @@ var AppProducer = function() {
 	    });
 	};
 
-	var getSearchShopkeepers = function (productId, municipalities) {
+	var getSearchShopkeepers = function (productId, communes) {
 
 		$.ajax({
-	        url: 'services/shopkeepers',
-	        data: {'_token': token, 'product_id': productId, 'municipalities': municipalities},
+	        url: '/admin/services/shopkeepers',
+	        data: {'_token': token, 'product_id': productId, 'communes': communes},
 	        dataType:'json',
 	        method:'GET',
 	        success:function(data) {
@@ -149,7 +155,7 @@ var AppProducer = function() {
 			type: 'select2',
 			emptytext: 'Seleccione un Producto',
 			name: 'product_id',
-	        source: '/services/products',
+	        source: '/admin/services/products',
 	        select2: {
 	            width: 300,
 	            placeholder: 'Seleccionar Producto',
@@ -256,9 +262,9 @@ var AppProducer = function() {
 	var initSearchShopkeepers = function() {
 		$("form").submit(function() {
 			var productId 			= $("#product-search").val();
-			var municipalities 		= $("#municipalities").val();
+			var communes 			= $("#communes").val();
 
-			getSearchShopkeepers (productId, municipalities);
+			getSearchShopkeepers (productId, communes);
 			
 			return false;
 		});
@@ -282,7 +288,7 @@ var AppProducer = function() {
     		placeholder: "Seleccione el Producto de interés",
     		dataType: 'json',
     		ajax: {
-			    url: "/services/production-products",
+			    url: "/admin/services/production-products",
 			    results: function (data) {
 		            var myResults = [];
 		            $.each(data, function (index, item) {
@@ -302,10 +308,13 @@ var AppProducer = function() {
 	var initModal = function (){
 		$('#modal-fade').on('shown.bs.modal', function (e) {
 			shopkeeper = $(e.relatedTarget).data('shopkeeper');
+			console.log('initModal');
+			console.log(shopkeeper);
 			$("#modal-shopkeeper-name").html(shopkeeper.name);
 			$("#modal-shopkeeper-email").html(shopkeeper.email);
 			$("#modal-shopkeeper-tel").html(shopkeeper.tel);
 			$("#modal-shopkeeper-address").html(shopkeeper.address);
+			$("#modal-shopkeeper-commune").html(shopkeeper.commune);
 			$("#modal-shopkeeper-municipality").html(shopkeeper.municipality.name);
 			$("#modal-shopkeeper-shoppingInterests").html(newModalShoppingInterestItems(shopkeeper));
     		initMap(shopkeeper.lat, shopkeeper.lng, shopkeeper.address);

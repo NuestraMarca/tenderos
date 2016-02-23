@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->integer('doc')->nullable()->unique();
             $table->string('tel', 30)->nullable();
             $table->string('address', 30)->nullable();
-            $table->string('lat', 30)->nullable();
-            $table->string('lng', 30)->nullable();
+            $table->string('lat', 30)->default('4.138369');
+            $table->string('lng', 30)->default('-73.631219');
             $table->string('password', 255);
 
             $table->string('url_photo', 255)->nullable();

@@ -64,7 +64,7 @@ var AppSocial = function() {
 
         // Build POST data and make AJAX request
         var data = {text: chatMsg, receptor_id: receptorUser.id};
-        $.post('/message', data).success(sendMessageSuccess(chatMsg));
+        $.post('/admin/message', data).success(sendMessageSuccess(chatMsg));
 
         // Ensure the normal browser event doesn't take place
         return false;

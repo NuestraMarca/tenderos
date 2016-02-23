@@ -56,7 +56,10 @@
 								<div class="col-sm-6">
 									<p class="h4"><i class="fa fa-at text-primary"></i> <span id="modal-producer-email">Kailey.Gorczany@Haag.com</span></p>
 									<p class="h4"><i class="gi gi-iphone_shake text-danger"></i> <span id="modal-producer-tel">3142308171</span></p>
-									<p class="h4"><i class="gi gi-home text-primary"></i> <span id="modal-producer-address">Carrera 38 # 23 - 68 San Benito</span></p>
+									<p class="h4"><i class="gi gi-home text-primary"></i> 
+										<span id="modal-producer-address">Carrera 38 # 23 - 68 San Benito</span>
+										- Comuna <span id="modal-shopkeeper-commune"> 1 </span>
+									</p>
 									<p class="h4"><i class="fa fa-map-marker text-danger"></i> <span id="modal-producer-municipality">Villavicencio</span></p>
 
 						            <div class="block">

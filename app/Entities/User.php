@@ -63,6 +63,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
+    public function scopeJoinShoppingInterest($query, $productId = null)
+    {
+        if(is_null($productId)) {
+            return $query->join('shopping_interests', 'shopping_interests.user_id', '=', 'users.id');
+        }
+
+        return $query->join('shopping_interests', function ($join) use ($productId) {
+            $join->on('users.id', '=', 'shopping_interests.user_id')
+                ->where('shopping_interests.product_id', '=', $productId)
+                ->where('amount', '>', '0');
+        });
+    }
+
     public function scopeShopkeepers($query)
     {
         return $query->whereType('shopkeeper');
@@ -258,23 +271,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $producers;    
     } 
 
-    public static function searchShopkeepers($productId = null, $municipalities = array())
+    public static function searchShopkeepers($productId = null, $communes = array())
     {
-        $shopkeepers = self::with(['shoppingInterests', 'municipality'])->shopkeepers()->get();
+        $shopkeepers = self::select('users.id', 'username', 'name', 'doc', 'tel', 'email', 'lat', 'lng', 'address', 
+            'type', 'commune', 'url_photo', 'municipality_id', 'users.updated_at', 'users.created_at')
+            ->joinShoppingInterest($productId)->groupBy('users.id')->orderBy('amount', 'desc')
+            ->shopkeepers()
+            ->with(['municipality', 'shoppingInterests' => function ($query) {
+                $query->where('amount', '>', '0');
+            }]);
 
-        if(! is_null($productId)) {
-            $shopkeepers = $shopkeepers->reject(function ($producer) use ($productId) {
-                return $producer->shoppingInterests->whereLoose('id', $productId)->isEmpty();
-            });
+        if(! empty($communes)){
+            $shopkeepers = $shopkeepers->whereIn('commune', $communes);
         }
 
-        if(! empty($municipalities)){
-            $shopkeepers = $shopkeepers->filter(function ($producer) use ($municipalities) {
-                return in_array($producer->municipality->id, $municipalities);
-            });
-        } 
-
-        return $shopkeepers;    
+        return $shopkeepers->get()->take(50);    
     }  
 
     public static function getOfflineWithMessages()

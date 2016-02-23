@@ -17,7 +17,7 @@
                                 <input name="product_id" id="product-search" style="width:100%;"></input>
                             </div>
                             <div class="form-group">
-                                {!! Form::select('municipalities[]', $municipalities, null, ['class' => 'select-chosen', 'data-placeholder' => 'Seleccione Municipios', 'id' => 'municipalities', 'multiple']) !!}
+                                {!! Form::select('communes[]', $communes, null, ['class' => 'select-chosen', 'data-placeholder' => 'Comunas', 'id' => 'communes', 'multiple']) !!}
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-effect-ripple btn-effect-ripple btn-primary">Buscar Tenderos</button>
@@ -53,7 +53,10 @@
                                 <div class="col-sm-6">
                                     <p class="h4"><i class="fa fa-at text-primary"></i> <span id="modal-shopkeeper-email">Kailey.Gorczany@Haag.com</span></p>
                                     <p class="h4"><i class="gi gi-iphone_shake text-danger"></i> <span id="modal-shopkeeper-tel">3142308171</span></p>
-                                    <p class="h4"><i class="gi gi-home text-primary"></i> <span id="modal-shopkeeper-address">Carrera 38 # 23 - 68 San Benito</span></p>
+                                    <p class="h4"><i class="gi gi-home text-primary"></i> 
+                                        <span id="modal-shopkeeper-address">Carrera 38 # 23 - 68 San Benito</span>
+                                        - Comuna <span id="modal-shopkeeper-commune"> 1 </span>
+                                    </p>
                                     <p class="h4"><i class="fa fa-map-marker text-danger"></i> <span id="modal-shopkeeper-municipality">Villavicencio</span></p>
 
                                     <div class="block">
@@ -66,7 +69,7 @@
                                     </div>                                      
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="h3 sub-header">Compras</p>
+                                    <p class="h3 sub-header">Interes de Compras</p>
                                     <table class="table table-striped table-borderless table-hover table-vcenter">
                                         <tbody id="modal-shopkeeper-shoppingInterests">
                                             

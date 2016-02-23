@@ -585,7 +585,7 @@ class ShopkeepersTableSeeder extends Seeder
 				$user = User::create([
 					'name'				=> $shopkeeper['name'],
 					'tel'				=> $shopkeeper['tel'],
-					'tel'				=> $shopkeeper['address'],
+					'address'			=> $shopkeeper['address'],
 					'commune'			=> $shopkeeper['commune'],
 					'username' 			=> $shopkeeper['tel'] ? $shopkeeper['tel']: $count,
 					'password'			=> 123,

@@ -118,7 +118,7 @@ var AppShopkeeper = function() {
 	var getSearchProducers = function (productId, subregion, months) {
 
 		$.ajax({
-	        url: 'services/producers',
+	        url: '/admin/services/producers',
 	        data: {'_token': token, 'product_id': productId, 'subregion': subregion, 'months': months},
 	        dataType:'json',
 	        method:'GET',
@@ -181,7 +181,7 @@ var AppShopkeeper = function() {
 			type: 'select2',
 			emptytext: 'Seleccione un Producto',
 			name: 'product_id',
-	        source: '/services/products',
+	        source: '/admin/services/products',
 	        select2: {
 	            width: 300,
 	            placeholder: 'Seleccionar Producto',
@@ -216,7 +216,7 @@ var AppShopkeeper = function() {
 	    	type: 'select2',
 	    	emptytext: 'Seleccione la Unidad de Medida',
 	    	name: 'unit',
-	        source: '/services/units',
+	        source: '/admin/services/units',
 	        select2: {
 	            width: 200,
 	            placeholder: 'Seleccionar Unidad',
@@ -300,7 +300,7 @@ var AppShopkeeper = function() {
     		placeholder: "Seleccione el Producto de interés",
     		dataType: 'json',
     		ajax: {
-			    url: "/services/shopping-interests",
+			    url: "/admin/services/shopping-interests",
 			    results: function (data) {
 		            var myResults = [];
 		            $.each(data, function (index, item) {
