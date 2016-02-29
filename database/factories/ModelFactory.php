@@ -23,7 +23,7 @@ $factory->define(User::class, function ($faker) {
         'name' => $faker->name,
         'username' => $faker->username,
         'email' => $faker->email,
-        'password' => 123,
+        'password' => 'gobernacionmeta',
         'remember_token' => str_random(10),
         'type' => 'registered',
         'tel' => $faker->phoneNumber,
