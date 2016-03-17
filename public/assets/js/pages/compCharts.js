@@ -19,7 +19,13 @@ var CompCharts = function() {
                             borderWidth: 1,
                             hoverable: true,
                             labelMargin: 10,
-                            axisMargin: 1
+                            axisMargin: 1,
+                            clickable: true
+                        },
+                        tooltip: {
+                            show: true,
+                            content: "%s | %y",
+                            cssClass: 'h1'
                         },
                         yaxis: {ticks: 15, tickColor: "#f5f5f5"},
                         xaxis: {ticks: json["names"], tickColor: "#f5f5f5"}
@@ -48,6 +54,11 @@ var CompCharts = function() {
                             labelMargin: 10,
                             axisMargin: 1
                         },
+                        tooltip: {
+                            show: true,
+                            content: "%s | %y",
+                            cssClass: 'h1'
+                        },
                         yaxis: {ticks: 15, tickColor: "#f5f5f5"},
                         xaxis: {ticks: json["names"], tickColor: "#f5f5f5"}
                     }
@@ -73,6 +84,11 @@ var CompCharts = function() {
                             hoverable: true,
                             labelMargin: 10,
                             axisMargin: 1
+                        },
+                        tooltip: {
+                            show: true,
+                            content: "%s | %y",
+                            cssClass: 'h1'
                         },
                         yaxis: {ticks: 25, tickColor: "#f5f5f5"},
                         xaxis: {ticks: json["names"], tickColor: "#f5f5f5"}
@@ -100,6 +116,11 @@ var CompCharts = function() {
                             labelMargin: 10,
                             axisMargin: 1
                         },
+                        tooltip: {
+                            show: true,
+                            content: "%s | %y",
+                            cssClass: 'h1'
+                        },
                         yaxis: {ticks: 15, tickColor: "#f5f5f5"},
                         xaxis: {ticks: json["names"], tickColor: "#f5f5f5"}
                     }
@@ -125,6 +146,11 @@ var CompCharts = function() {
                             hoverable: true,
                             labelMargin: 10,
                             axisMargin: 1
+                        },
+                        tooltip: {
+                            show: true,
+                            content: "%s | %y",
+                            cssClass: 'h1'
                         },
                         yaxis: {ticks: 15, tickColor: "#f5f5f5"},
                         xaxis: {ticks: json["names"], tickColor: "#f5f5f5"}

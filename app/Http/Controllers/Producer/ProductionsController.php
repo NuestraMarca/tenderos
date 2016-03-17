@@ -20,10 +20,16 @@ class ProductionsController extends Controller
      */
     public function postIndex(Request $request)
     {
+        $id = Auth::user()->id;
+        
+        if($request->has('user-id')){
+            $id = $request->get('user-id');
+        }
+        
         $product = Product::findOrFail($request->get('product'));
 
         $production = Production::firstOrNew([
-            'user_id'       => Auth::user()->id,
+            'user_id'       => $id,
             'product_id'    => $product->id
         ]);
         

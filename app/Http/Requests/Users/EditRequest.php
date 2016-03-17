@@ -36,10 +36,16 @@ class EditRequest extends Request
      */
     public function rules()
     {
+        $id = $this->route->getParameter('tenderos');
+
+        if(is_null($id)){
+            $id = $this->route->getParameter('productores');            
+        }
+
         $rules = $this->createRequest->rules();
-        $rules['username'] .= ',username,'.$this->route->getParameter('users').',id';
-        $rules['doc'] .= ',doc,'.$this->route->getParameter('users').',id';
-        $rules['email'] .= ',email,'.$this->route->getParameter('users').',id';
+        $rules['username'] .= ',username,'. $id .',id';
+        $rules['doc'] .= ',doc,'. $id .',id';
+        $rules['email'] .= ',email,'. $id .',id';
         $rules['password'] = 'confirmed';
         $rules['terms'] = '';
 

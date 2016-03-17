@@ -28,7 +28,7 @@ class AuthController extends Controller {
     private $registerProducerView   = 'auth.register.producer';
     private $registerShopkeeperView = 'auth.register.shopkeeper';
     private $username               = 'username';
-    protected $redirectPath         = '/';
+    protected $redirectPath         = '/admin';
 
     /**
      * Create a new authentication controller instance.

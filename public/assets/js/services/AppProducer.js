@@ -151,7 +151,7 @@ var AppProducer = function() {
 	var initEditable = function () {
 
 		$('.productEditable').editable({
-			url: 'productions',
+			url: '/admin/productions',
 			type: 'select2',
 			emptytext: 'Seleccione un Producto',
 			name: 'product_id',
@@ -186,7 +186,7 @@ var AppProducer = function() {
 	    });  
 
 	    $('.monthsEditable').editable({
-	    	url: 'productions',
+	    	url: '/admin/productions',
 	    	type: 'select2',
 	    	emptytext: 'Seleccione los Meses del Año',
 	    	name: 'months',
@@ -226,7 +226,7 @@ var AppProducer = function() {
 		
 		$(saveButtomId).click(function() {
 		    $(classProductItems).editable('submit', { 
-		       	url: 'productions', 
+		       	url: '/admin/productions', 
 		       	ajaxOptions: {
 			    	type: 'POST',
 			    	dataType: 'json'
@@ -318,6 +318,10 @@ var AppProducer = function() {
 			$("#modal-shopkeeper-municipality").html(shopkeeper.municipality.name);
 			$("#modal-shopkeeper-shoppingInterests").html(newModalShoppingInterestItems(shopkeeper));
     		initMap(shopkeeper.lat, shopkeeper.lng, shopkeeper.address);
+    		var edit = "/admin/tenderos/" + shopkeeper.id + "/edit";
+    		$("#modal-shopkeeper-id").attr('href', edit);
+    		var shopping = "/admin/tenderos/" + shopkeeper.id + "/shopping";
+    		$("#modal-shopkeeper-shopping").attr('href', shopping);
 		})
 	};
 
@@ -331,7 +335,7 @@ var AppProducer = function() {
 		},
 		postDeleteProduct: function (productElement) {
 			var productionId 	= $(productElement).data('production-id');
-			var url 		= '/productions/product/' +  productionId;
+			var url 		= '/admin/productions/product/' +  productionId;
 
 			postDelete(productionId, url);
 		}

@@ -18,12 +18,18 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postIndex(Request $request)
+    public function postIndex(Request $request, $id = null)
     {
+        $id = Auth::user()->id;
+        
+        if($request->has('user-id')){
+            $id = $request->get('user-id');
+        }
+
         $product    = Product::findOrFail($request->get('product'));
 
         $shoppingInterest = ShoppingInterest::firstOrNew([
-            'user_id'       => Auth::user()->id,
+            'user_id'       => $id,
             'product_id'    => $product->id
         ]);
         

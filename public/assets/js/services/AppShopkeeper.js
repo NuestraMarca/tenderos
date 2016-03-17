@@ -12,6 +12,7 @@ var AppShopkeeper = function() {
 	var token 	= $('#formProduct').data('token');
 	var lat 	= $('#formProduct').data('lat');
 	var lng 	= $('#formProduct').data('lng');
+	var user_id 	= $('#formProduct').data('user-id');
 
 	var newModalProductionItem = function (productName, months) {
 		var item =
@@ -149,7 +150,7 @@ var AppShopkeeper = function() {
 	var initEditable = function () {
 		
 		$('.amountEditable').editable({
-			url: 'products',
+			url: '/admin/products',
 			name: 'amount',
 			type: 'number',
 			emptytext: 'Cantidad a la semana',
@@ -177,7 +178,7 @@ var AppShopkeeper = function() {
 		});
 
 		$('.productEditable').editable({
-			url: 'products',
+			url: '/admin/products',
 			type: 'select2',
 			emptytext: 'Seleccione un Producto',
 			name: 'product_id',
@@ -212,7 +213,7 @@ var AppShopkeeper = function() {
 	    });  
 
 	    $('.unitEditable').editable({
-	    	url: 'products',
+	    	url: '/admin/products',
 	    	type: 'select2',
 	    	emptytext: 'Seleccione la Unidad de Medida',
 	    	name: 'unit',
@@ -251,12 +252,12 @@ var AppShopkeeper = function() {
 		
 		$(saveButtomId).click(function() {
 		    $(classProductItems).editable('submit', { 
-		       	url: 'products', 
+		       	url: '/admin/products', 
 		       	ajaxOptions: {
 			    	type: 'POST',
 			    	dataType: 'json'
 				},
-				data: {_token: token},
+				data: {_token: token, 'user-id': user_id},
 		       	success: function(data, config) {
 		            if(data && data.product) {  //record created, response like {"id": 2}
 		               $('#users').append(newProductItem(data.product, data.shoppingInterest));
@@ -339,6 +340,10 @@ var AppShopkeeper = function() {
 			$("#modal-producer-municipality").html(producer.municipality.name);
 			$("#modal-producer-productions").html(newModalProductionItems(producer));
     		initMap(producer.lat, producer.lng, producer.address);
+    		var edit = "/admin/productores/" + producer.id + "/edit";
+    		$("#modal-producer-id").attr('href', edit);
+    		var shopping = "/admin/productores/" + producer.id + "/shopping";
+    		$("#modal-producer-shopping").attr('href', shopping);
 		})
 	};
 
@@ -352,7 +357,7 @@ var AppShopkeeper = function() {
 		},
 		postDeleteProduct: function (productElement) {
 			var productId 	= $(productElement).data('product-id');
-			var url 		= '/products/product/' +  productId;
+			var url 		= '/admin/products/product/' +  productId;
 
 			postDelete(productId, url);
 		}

@@ -11,13 +11,13 @@ use Tenderos\Http\Requests\Users\EditRequest;
 use Tenderos\Entities\User;
 use Flash;
 
-class UsersController extends Controller
+class ProducersController extends Controller
 {
-    private $user;
+    private $producer;
     private $form_data;
 
-    private static $prefixRoute = 'admin.users.';
-    private static $prefixView = 'dashboard.pages.admin.users.';
+    private static $prefixRoute = 'admin.productores.';
+    private static $prefixView = 'dashboard.pages.admin.producers.';
 
     public function __construct()
     {
@@ -29,7 +29,7 @@ class UsersController extends Controller
      */
     public function findUser(Route $route)
     {
-        $this->user = User::findOrFail($route->getParameter('users'));
+        $this->producer = User::findOrFail($route->getParameter('productores'));
     }
 
     /**
@@ -38,7 +38,7 @@ class UsersController extends Controller
     public function getFormView($viewName = 'form', array $vars = array())
     {
         return view(self::$prefixView.$viewName)
-            ->with(['form_data' => $this->form_data, 'user' => $this->user] + $vars);
+            ->with(['form_data' => $this->form_data, 'producer' => $this->producer] + $vars);
     }
 
     /**
@@ -48,10 +48,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::notAdmins()->orderBy('name')->paginate(20);
+        $producers = User::notAdmins()->orderBy('name')->paginate(20);
         $this->form_data = ['route' => self::$prefixRoute.'store', 'method' => 'POST'];
 
-        return $this->getFormView('lists', ['users' => $users]);
+        return $this->getFormView('lists', ['producers' => $producers]);
     }
 
     /**
@@ -64,7 +64,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $this->form_data = [
-            'route' => [self::$prefixRoute.'update', $this->user->id],
+            'route' => [self::$prefixRoute.'update', $this->producer->id],
             'method' => 'PUT'
         ];
 
@@ -80,11 +80,17 @@ class UsersController extends Controller
      */
     public function update(EditRequest $request, $id)
     {
-        $this->user->fill($request->all());
-        $this->user->save();
+        $this->producer->fill($request->all());
+        $this->producer->save();
 
-        Flash::info('Tendero '.$this->user->name.' Actualizado correctamente');
+        Flash::info('Productor '.$this->producer->name.' Actualizado correctamente');
 
         return redirect()->route(self::$prefixRoute . 'index');
+    }
+
+    public function shopping($id)
+    {
+        return view(self::$prefixView . 'shopping')
+             ->with('user', $this->producer); 
     }
 }

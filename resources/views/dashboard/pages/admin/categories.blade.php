@@ -25,7 +25,7 @@
 		    <div class="col-lg-3">
 		        <a href="{{ route('admin.categories.products.index', $category->id) }}" class="widget text-center">
 					<div class="widget-content">
-						<i class="gi fa-3x gi-folder_plus text-dark"></i>
+						<img src="/images/placeholders/icons/box.png" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar">
 					</div>
 					<div class="widget-content themed-background-muted text-dark">
 						<strong class="h4">{{ $category->name }}</strong>

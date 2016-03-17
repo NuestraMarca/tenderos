@@ -75,9 +75,16 @@ Breadcrumbs::register('roles.role', function ($breadcrumbs, $role) {
     }
 });
 
+
+
+Breadcrumbs::register('admin', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Administrador', url('/admin'));
+});
+
 // Admin > Categories
 Breadcrumbs::register('categories', function ($breadcrumbs) {
-    //$breadcrumbs->parent('home');
+    $breadcrumbs->parent('admin');
     $breadcrumbs->push('Categorías', route('admin.categories.index'));
 });
 
@@ -145,18 +152,33 @@ Breadcrumbs::register('protocols.protocol.question', function ($breadcrumbs, $pr
     }
 });
 
-// Home > Users
-Breadcrumbs::register('users', function ($breadcrumbs) {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Usuarios', route('admin.users.index'));
+// Home > Admin > Tenderos
+Breadcrumbs::register('admin.shopkeepers', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin');
+    $breadcrumbs->push('Tenderos', route('admin.tenderos.index'));
 });
 
-// Home > Users > User
-Breadcrumbs::register('users.user', function ($breadcrumbs, $user) {
-    $breadcrumbs->parent('users');
+// Home > Admin > Tenderos > Tendero
+Breadcrumbs::register('admin.shopkeepers.user', function ($breadcrumbs, $user) {
+    $breadcrumbs->parent('admin.shopkeepers');
 
     if ($user->exists) {
-        $breadcrumbs->push($user->name, route('admin.users.edit', $user->id));
+        $breadcrumbs->push($user->name, route('admin.tenderos.edit', $user->id));
+    } 
+});
+
+// Home > Admin > Productores
+Breadcrumbs::register('admin.producers', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin');
+    $breadcrumbs->push('Productores', route('admin.productores.index'));
+});
+
+// Home > Admin > Productores > Productor
+Breadcrumbs::register('admin.producers.user', function ($breadcrumbs, $user) {
+    $breadcrumbs->parent('admin.producers');
+
+    if ($user->exists) {
+        $breadcrumbs->push($user->name, route('admin.productores.edit', $user->id));
     } 
 });
 

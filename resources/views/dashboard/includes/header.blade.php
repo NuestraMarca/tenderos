@@ -12,8 +12,25 @@
 
         <!-- Header Link -->
         <li class="hidden-xs animation-fadeInQuick">
-            <a href=""><strong>Hola, {{ Auth::user()->name }}</strong></a>
+            <a href="/"><strong> <i class="fa fa-home"></i> Inicio</strong></a>
         </li>
+        @if(Auth::user()->isAdmin())
+            <li class="hidden-xs animation-fadeInQuick">
+                <a href="admin"><strong> <i class="fa fa-user"></i> Administrador</strong></a>
+            </li>
+            <li class="hidden-xs animation-fadeInQuick">
+                <a href="/estadisticas"><strong> <i class="fa fa-bar-chart"></i> Estadísticas</strong></a>
+            </li>
+            <li class="hidden-xs animation-fadeInQuick">
+                <a href="/admin/categories"><strong><i class="fa fa-folder-open"></i> Categorías</strong></a>
+            </li>
+            <li class="hidden-xs animation-fadeInQuick">
+                <a href="/admin/tenderos"><strong><i class="fa fa-user"></i> Tenderos</strong></a>
+            </li>
+            <li class="hidden-xs animation-fadeInQuick">
+                <a href="/admin/productores"><strong><i class="fa fa-users"></i> Productores</strong></a>
+            </li>
+        @endif
         <!-- END Header Link -->
     </ul>
     <!-- END Left Header Navigation -->

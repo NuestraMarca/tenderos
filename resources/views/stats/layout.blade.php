@@ -33,9 +33,29 @@
 	</head>
 	<body>
 		<div class="main">
-			<h1 style="margin-bottom: 0.2em;">Proyecto juntos con el tendero</h1>
+			<h1 style="margin-bottom: 0.2em;"><a href="/" title="Volver al inicio" class="text-info">Proyecto juntos con el tendero</a></h1>
 			<h2>@yield('title', 'Estadisticas')</h2>
-			
+			<div class="col-xs-12">
+				
+				@if(Auth::guest())
+					<a href="/auth/register" class="btn btn-warning home-register">
+						<i class="fa fa-plus-circle"></i> Registrarme
+					</a>	
+					<a href="/auth/login" class="btn btn-primary home-login">
+						<i class="fa fa-check-circle"></i> Iniciar sesión
+					</a>
+				@else
+					<a href="/auth/logout" class="btn btn-danger home-login">
+						<i class="fa fa-times-circle"></i> Cerrar sesión
+					</a>
+					<a href="/admin" class="btn btn-info home-login">
+						<i class="fa fa-user"></i> Administrador
+					</a>
+				@endif
+				<a href="/" class="btn btn-primary home-login">
+					<i class="fa fa-home"></i> Inicio
+				</a>
+			</div>
 			<nav class="col-md-3">
 				<h4 class="h3">Estadisticas Generales</h4>
 				<ul>
@@ -50,6 +70,7 @@
 				</ul>
 			</nav>
 			<div class="stat-image col-md-9">
+				
 				@yield('stat')
 			</div>
 			<div class="footer col-xs-12">
@@ -66,6 +87,8 @@
 		{!! Html::script('assets/js/vendor/bootstrap.min.js') !!}
 		{!! Html::script('assets/js/app.min.js') !!}
 		{!! Html::script('assets/js/plugins.js') !!}
+		{!! Html::script('assets/js/plugins/flot.tooltip/jquery.flot.tooltip.min.js') !!}
+		{!! Html::script('assets/js/plugins/flot.tooltip/jquery.flot.tooltip.source.js') !!}
 		
 		<!-- Load and execute javascript code used only in this page -->
 		{!! Html::script('assets/js/pages/compCharts.js') !!}

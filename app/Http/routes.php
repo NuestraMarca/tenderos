@@ -54,7 +54,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     
     Route::group(['middleware' => ['user_type:admin'], 'namespace' => 'Admin'], function () {
         
-        Route::resource('users', 'UsersController');
+        Route::resource('tenderos', 'ShopkeepersController');
+        Route::get('tenderos/{tenderos}/shopping', [
+            'as' => 'tenderos.shopping', 
+            'uses' => 'ShopkeepersController@shopping'
+        ]);
+
+        Route::resource('productores', 'ProducersController');
+        Route::get('productores/{productores}/shopping', [
+            'as' => 'productores.shopping', 
+            'uses' => 'ProducersController@shopping'
+        ]);
+
         Route::resource('categories', 'CategoriesController');
     	Route::resource('categories.products', 'CategoriesProductsController');
 	});

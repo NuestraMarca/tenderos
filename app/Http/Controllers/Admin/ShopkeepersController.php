@@ -11,17 +11,17 @@ use Tenderos\Http\Requests\Users\EditRequest;
 use Tenderos\Entities\User;
 use Flash;
 
-class UsersController extends Controller
+class ShopkeepersController extends Controller
 {
-    private $user;
+    private $shopkeeper;
     private $form_data;
 
-    private static $prefixRoute = 'admin.users.';
-    private static $prefixView = 'dashboard.pages.admin.';
+    private static $prefixRoute = 'admin.tenderos.';
+    private static $prefixView = 'dashboard.pages.admin.shopkeepers.';
 
     public function __construct()
     {
-        $this->beforeFilter('@findUser', ['only' => ['show', 'edit', 'update', 'destroy']]);
+        $this->beforeFilter('@findUser', ['only' => ['show', 'edit', 'update', 'destroy', 'shopping']]);
     }
 
     /**
@@ -29,7 +29,7 @@ class UsersController extends Controller
      */
     public function findUser(Route $route)
     {
-        $this->user = User::findOrFail($route->getParameter('users'));
+        $this->shopkeeper = User::findOrFail($route->getParameter('tenderos'));
     }
 
     /**
@@ -38,7 +38,7 @@ class UsersController extends Controller
     public function getFormView($viewName = 'form', array $vars = array())
     {
         return view(self::$prefixView.$viewName)
-            ->with(['form_data' => $this->form_data, 'user' => $this->user] + $vars);
+            ->with(['form_data' => $this->form_data, 'shopkeeper' => $this->shopkeeper] + $vars);
     }
 
     /**
@@ -48,10 +48,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(20);
+        $shopkeepers = User::paginate(20);
         $this->form_data = ['route' => self::$prefixRoute.'store', 'method' => 'POST'];
 
-        return $this->getFormView('users', ['users' => $users]);
+        return $this->getFormView('lists', ['shopkeepers' => $shopkeepers]);
     }
 
     /**
@@ -64,7 +64,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $this->form_data = [
-            'route' => [self::$prefixRoute.'update', $this->user->id],
+            'route' => [self::$prefixRoute.'update', $this->shopkeeper->id],
             'method' => 'PUT'
         ];
 
@@ -80,11 +80,17 @@ class UsersController extends Controller
      */
     public function update(EditRequest $request, $id)
     {
-        $this->user->fill($request->all());
-        $this->user->save();
+        $this->shopkeeper->fill($request->all());
+        $this->shopkeeper->save();
 
-        Flash::info('Tendero '.$this->user->name.' Actualizado correctamente');
+        Flash::info('Tendero '.$this->shopkeeper->name.' Actualizado correctamente');
 
-        return redirect()->route(self::$prefixRoute . 'index', $this->user->id);
+        return redirect()->route(self::$prefixRoute . 'index', $this->shopkeeper->id);
+    }
+
+    public function shopping($id)
+    {
+        return view(self::$prefixView . 'shopping')
+            ->with('user', $this->shopkeeper); 
     }
 }
